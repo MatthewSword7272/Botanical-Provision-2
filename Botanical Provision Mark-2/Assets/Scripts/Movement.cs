@@ -7,12 +7,10 @@ public class Movement : MonoBehaviour
 
     public CharacterController controller;
     public Transform cam;
-
+    public Interactable focus;
     public float speed = 6f;
-
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +27,56 @@ public class Movement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(speed * Time.deltaTime * moveDir.normalized);
         }
+        //leftclick
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
 
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                   // motor.MovetoPoint(hit.point);
+                    RemoveFocus();
+
+                }
+            }
+        }
+        //right click
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100)) {
+
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null) {
+                    SetFocus(interactable);
+
+                }
+            }
+
+        }
 
     }
+        void SetFocus(Interactable newFocus) {
+            focus = newFocus;
+        if (newFocus != focus) {
+            if (focus != null)focus.onDefocus(); 
+            focus = newFocus;
+        }
+        newFocus.onFocus(transform);
+        }
+    void RemoveFocus()
+    {
+
+        if (focus != null)
+        {
+            focus.onDefocus();
+            focus = null;
+        }
+
+    }
+    
 }
