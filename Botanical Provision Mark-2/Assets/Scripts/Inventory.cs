@@ -8,16 +8,19 @@ public class Inventory : MonoBehaviour
     public delegate void onItemChanged();
     public onItemChanged onItemChangedCallback;
     public static Inventory instance;
-    void awake() {
+    public List<Item> items = new();
+    
+    void Awake() {
         if (instance != null) {
             return;
         }
         instance = this;
     }
-    public List<Item> items = new List<Item>();
+
+    
     public void Add(Item item) {
 
-        if (items.Count<= space)
+        if (items.Count <= space)
         {
 
             items.Add(item);
@@ -36,6 +39,6 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
-    public void test() { }
+    public void Test() { }
 
 }
