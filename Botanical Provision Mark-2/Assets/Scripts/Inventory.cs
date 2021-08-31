@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public delegate void onItemChanged();
     public onItemChanged onItemChangedCallback;
     public static Inventory instance;
-    void awake() {
+    void Awake() {
         if (instance != null) {
             return;
         }

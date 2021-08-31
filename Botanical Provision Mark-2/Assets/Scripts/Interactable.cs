@@ -14,13 +14,13 @@ public class Interactable : MonoBehaviour
     
     }
 
-    public void onFocus(Transform playerTransform) {
+    public void OnFocus(Transform playerTransform) {
     
         isFocus = true;
         hasInteracted = false;
         player = playerTransform;
     }
-    public void onDefocus() {
+    public void OnDefocus() {
         isFocus = false;
         hasInteracted = false;
         player = null;

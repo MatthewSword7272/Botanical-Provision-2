@@ -6,14 +6,14 @@ public class ItemPickup : Interactable
 {
     // Start is called before the first frame update
     public Item item;
-    bool done=false;
+    readonly bool done=false;
     public override void Interact()
     {
 
         base.Interact();
-        pick();
+        Pick();
     }
-    void pick()
+    void Pick()
     {
         FindObjectOfType<Inventory>().Add(item);
         Debug.Log("picking"+item.itemName) ;

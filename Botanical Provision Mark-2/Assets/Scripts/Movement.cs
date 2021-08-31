@@ -31,14 +31,13 @@ public class Movement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
 
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
-                   // motor.MovetoPoint(hit.point);
+                    // motor.MovetoPoint(hit.point);
                     RemoveFocus();
 
                 }
@@ -47,11 +46,12 @@ public class Movement : MonoBehaviour
         //right click
         if (Input.GetMouseButtonDown(1)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100)) {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100))
+            {
 
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null) {
+                if (interactable != null)
+                {
                     SetFocus(interactable);
 
                 }
@@ -63,17 +63,17 @@ public class Movement : MonoBehaviour
         void SetFocus(Interactable newFocus) {
             focus = newFocus;
         if (newFocus != focus) {
-            if (focus != null)focus.onDefocus(); 
+            if (focus != null)focus.OnDefocus(); 
             focus = newFocus;
         }
-        newFocus.onFocus(transform);
+        newFocus.OnFocus(transform);
         }
     void RemoveFocus()
     {
 
         if (focus != null)
         {
-            focus.onDefocus();
+            focus.OnDefocus();
             focus = null;
         }
 
