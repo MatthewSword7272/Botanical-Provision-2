@@ -18,6 +18,7 @@ public class ItemPickup : Interactable
         FindObjectOfType<Inventory>().Add(item);
         Debug.Log("picking"+item.itemName) ;
         //add to inventory
+        
 
     }
 }

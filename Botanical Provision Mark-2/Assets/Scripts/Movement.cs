@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Movement : MonoBehaviour
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -39,20 +42,34 @@ public class Movement : MonoBehaviour
                 {
                     // motor.MovetoPoint(hit.point);
                     RemoveFocus();
+                    
 
                 }
             }
         }
-        //right click
+        //press E to get Fruit
         if (Input.GetMouseButtonDown(1)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
-
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
                     SetFocus(interactable);
+                    Slider healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
+                    Slider hungerSlider = GameObject.Find("HungerSlider").GetComponent<Slider>();
+
+                    if (interactable.name == "Berry Bush")
+                    {
+                        healthSlider.value += 25;
+                        hungerSlider.value += 25;
+                    }
+                    else if (interactable.name == "Banana Tree")
+                    {
+                        healthSlider.value += 50;
+                        hungerSlider.value += 50;
+
+                    }
 
                 }
             }

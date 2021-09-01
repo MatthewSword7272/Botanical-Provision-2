@@ -21,6 +21,8 @@ public class PlayerVitals : MonoBehaviour
 
         hungerSlider.maxValue = maxHunger;
         hungerSlider.value = maxHunger;
+
+
     }
 
     private void Update()

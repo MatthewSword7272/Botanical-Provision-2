@@ -11,7 +11,8 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
 
     public virtual void Interact() { 
-    
+
+
     }
 
     public void OnFocus(Transform playerTransform) {
