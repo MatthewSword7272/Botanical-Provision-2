@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     public void Add(Item item) {
        
             if (items.Count <= space)
-            {
+            {          
 
                 items.Add(item);
 
