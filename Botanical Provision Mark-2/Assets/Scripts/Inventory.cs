@@ -8,29 +8,41 @@ public class Inventory : MonoBehaviour
     public delegate void onItemChanged();
     public onItemChanged onItemChangedCallback;
     public static Inventory instance;
-    void Awake() {
-        if (instance != null) {
+    void Awake()
+    {
+        if (instance != null)
+        {
             return;
         }
         instance = this;
     }
     public List<Item> items = new List<Item>();
-    public void Add(Item item) {
-       
-            if (items.Count <= space)
-            {          
+    public void Add(Item item)
+    {
+        if (items.Count <= space)
+        {
 
-                items.Add(item);
-
-                if (onItemChangedCallback != null)
-                {
-                    onItemChangedCallback.Invoke();
-                }
+            if (items.Contains(item) && item.itemAmount < space)
+            {
+                ++item.itemAmount;
+                return;
             }
-        
+            else
+            {
+                items.Add(item);
+            }
+
+
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
+            }
+        }
+
 
     }
-    public void Remove(Item item) {
+    public void Remove(Item item)
+    {
         items.Remove(item);
         if (onItemChangedCallback != null)
         {

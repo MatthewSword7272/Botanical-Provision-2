@@ -29,8 +29,10 @@ public class InventorySlot : MonoBehaviour
                 return;
             }
 
-            _amount += amount;
+            
         }
+
+        
         _amountText.text = _amount.ToString();
 
     }
