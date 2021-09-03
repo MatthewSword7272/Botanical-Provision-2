@@ -40,22 +40,6 @@ public class Movement : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
-                    // motor.MovetoPoint(hit.point);
-                    RemoveFocus();
-                    
-
-                }
-            }
-        }
-        //press E to get Fruit
-        if (Input.GetMouseButtonDown(1)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 100))
-            {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    SetFocus(interactable);
                     Slider healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
                     Slider hungerSlider = GameObject.Find("HungerSlider").GetComponent<Slider>();
 
@@ -70,6 +54,23 @@ public class Movement : MonoBehaviour
                         hungerSlider.value += 50;
 
                     }
+                    // motor.MovetoPoint(hit.point);
+                    
+
+
+                }
+            }
+        }
+        //press E to get Fruit
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+
+                    SetFocus(interactable);
 
                 }
             }
@@ -80,8 +81,10 @@ public class Movement : MonoBehaviour
         void SetFocus(Interactable newFocus) {
             focus = newFocus;
         if (newFocus != focus) {
-            if (focus != null)focus.OnDefocus(); 
-            focus = newFocus;
+            if (focus != null)focus.OnDefocus();
+            {
+                focus = newFocus;
+            }
         }
         newFocus.OnFocus(transform);
         }

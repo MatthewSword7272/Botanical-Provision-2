@@ -16,17 +16,18 @@ public class Inventory : MonoBehaviour
     }
     public List<Item> items = new List<Item>();
     public void Add(Item item) {
-
-        if (items.Count<= space)
-        {
-
-            items.Add(item);
-
-            if (onItemChangedCallback != null)
+       
+            if (items.Count <= space)
             {
-                onItemChangedCallback.Invoke();
+
+                items.Add(item);
+
+                if (onItemChangedCallback != null)
+                {
+                    onItemChangedCallback.Invoke();
+                }
             }
-        }
+        
 
     }
     public void Remove(Item item) {

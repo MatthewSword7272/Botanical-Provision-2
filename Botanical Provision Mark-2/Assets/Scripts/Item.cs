@@ -6,6 +6,8 @@ public class Item : ScriptableObject
 {
     public string itemName = "itemname";
     public Sprite icon = null;
+    public bool itemDefault = false;
+
     public virtual void Use() {
 
         Debug.Log("Using "+itemName);
