@@ -7,7 +7,8 @@ public class Item : ScriptableObject
     public string itemName = "itemname";
     public Sprite icon = null;
     public bool itemDefault = false;
-    public int itemAmount = 1; 
+    public int itemAmount = 1;
+    public int maxStack = 9;
 
     public virtual void Use() {
 

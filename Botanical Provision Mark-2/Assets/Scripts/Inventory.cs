@@ -8,8 +8,10 @@ public class Inventory : MonoBehaviour
     public delegate void onItemChanged();
     public onItemChanged onItemChangedCallback;
     public static Inventory instance;
+
     void Awake()
     {
+
         if (instance != null)
         {
             return;
@@ -22,14 +24,22 @@ public class Inventory : MonoBehaviour
         if (items.Count <= space)
         {
 
-            if (items.Contains(item) && item.itemAmount < space)
+            if (items.Contains(item) && item.itemAmount < item.maxStack)
             {
-                ++item.itemAmount;
-                return;
+                for (int i = 0; i < items.Count; i++)
+                {
+                    if (items[i].name == item.name)
+                    {
+                        ++items[i].itemAmount;
+                        
+
+                    }
+                }
             }
             else
             {
                 items.Add(item);
+                item.itemAmount = 1;
             }
 
 

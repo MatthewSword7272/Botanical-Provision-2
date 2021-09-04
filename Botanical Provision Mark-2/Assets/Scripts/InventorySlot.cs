@@ -8,18 +8,16 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     Item item;
     public Button removeButton;
-    int _amount;
     public Text _amountText;
 
 
-    public void AddItem(Item newItem, int amount = 1) {
+    public void AddItem(Item newItem) {
         if (!item)
         {
             item = newItem;
             icon.sprite = item.icon;
             icon.enabled = true;
             removeButton.interactable = true;
-            _amount = amount;
         }
         else
         {
@@ -30,10 +28,8 @@ public class InventorySlot : MonoBehaviour
             }
 
             
-        }
-
-        
-        _amountText.text = _amount.ToString();
+        }        
+        _amountText.text = item.itemAmount.ToString();
 
     }
 
@@ -47,15 +43,18 @@ public class InventorySlot : MonoBehaviour
             return;
         }
 
-        if (_amount - amount < 0)
+        if (item.itemAmount - amount < 0)
         {
             Debug.LogWarning($"Not enough items in this slot to remove {amount}!", this);
         }
+        else
+        {
+            // simply reduce the amount
+            item.itemAmount -= amount;
 
-        // simply reduce the amount
-        _amount -= amount;
+        }   
         // update the text
-        _amountText.text = amount.ToString();
+        _amountText.text = item.itemAmount.ToString();
 
         // Only if you reached 0 -> removed the last item 
         // reset this slot
