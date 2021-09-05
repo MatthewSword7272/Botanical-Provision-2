@@ -59,6 +59,6 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
-    public void test() { }
+    public void Test() { }
 
 }

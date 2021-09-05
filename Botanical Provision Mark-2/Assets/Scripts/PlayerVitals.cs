@@ -7,11 +7,11 @@ public class PlayerVitals : MonoBehaviour
 {
     public Slider healthSlider;
     public int maxHealth;
-    private int healthFallRate = 5;
+    private readonly int healthFallRate = 5;
 
     public Slider hungerSlider;
     public int maxHunger;
-    private int hungerFallRate = 5;
+    private readonly int hungerFallRate = 5;
 
 
     private void Start()

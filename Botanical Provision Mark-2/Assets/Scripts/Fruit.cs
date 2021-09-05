@@ -6,9 +6,6 @@ public class Fruit : Item
 {
     private PlayerVitals playerVitals;
 
-    private void Awake()
-    {
-    }
 
     public void AddHealth(string furit)
     {
