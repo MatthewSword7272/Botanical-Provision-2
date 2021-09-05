@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
         if (items.Count <= space)
         {
 
-            if (items.Contains(item) && item.itemAmount < item.maxStack)
+            if (items.Contains(item))
             {
                 for (int i = 0; i < items.Count; i++)
                 {
