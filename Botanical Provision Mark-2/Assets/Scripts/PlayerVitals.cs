@@ -7,11 +7,11 @@ public class PlayerVitals : MonoBehaviour
 {
     public Slider healthSlider;
     public int maxHealth;
-    private readonly int healthFallRate = 5;
+    private readonly int healthFallRate = 3;
 
     public Slider hungerSlider;
     public int maxHunger;
-    private readonly int hungerFallRate = 5;
+    private readonly int hungerFallRate = 3;
 
 
     private void Start()
@@ -27,16 +27,22 @@ public class PlayerVitals : MonoBehaviour
 
     private void Update()
     {
+        //Health Controller
         if (hungerSlider.value <= 0)
         {
             healthSlider.value -= Time.deltaTime / healthFallRate;
 
+        }
+        if (healthSlider.value >= maxHealth)
+        {
+            healthSlider.value = maxHealth;
         }
         if (healthSlider.value <= 0)
         {
             CharacterDeath();
         }
 
+        //Hunger Controller
         if (hungerSlider.value >= 0)
         {
             hungerSlider.value -= Time.deltaTime / hungerFallRate;
@@ -45,7 +51,6 @@ public class PlayerVitals : MonoBehaviour
         {
             hungerSlider.value = 0;
         }
-
         else if (hungerSlider.value >= maxHunger)
         {
             hungerSlider.value = maxHunger;
