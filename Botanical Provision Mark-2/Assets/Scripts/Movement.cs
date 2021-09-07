@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-
     public CharacterController controller;
     public Transform cam;
     public Interactable focus;

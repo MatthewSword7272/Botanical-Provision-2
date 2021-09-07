@@ -11,8 +11,13 @@ public class InventorySlot : MonoBehaviour
     Item item;
     public Button removeButton;
     public Text _amountText;
+    Inventory inventory;
 
 
+    private void Start()
+    {
+        inventory = Inventory.instance;
+    }
 
     public void AddItem(Item newItem) {
         if (!item)
@@ -59,9 +64,10 @@ public class InventorySlot : MonoBehaviour
         // update the text
         _amountText.text = item.itemAmount.ToString();
 
+
         // Only if you reached 0 -> removed the last item 
         // reset this slot
-        if (amount == 0)
+        if (amount <= 0)
         {
             item = null;
             icon.sprite = null;
@@ -78,14 +84,15 @@ public class InventorySlot : MonoBehaviour
 
     }
     public void OnRemoveButton() {
-        int amount = Int32.Parse(_amountText.text);
+        int amount = int.Parse(_amountText.text);
         Debug.Log("remove" + item.itemName);
 
         amount--;
-        if ( amount== 0)
+        if ( amount == 0)
         {
-            FindObjectOfType<Inventory>().Remove(item);
+            inventory.items.Remove(item);
             _amountText.text = "";
+            RemoveItem();
             return;
 
         }

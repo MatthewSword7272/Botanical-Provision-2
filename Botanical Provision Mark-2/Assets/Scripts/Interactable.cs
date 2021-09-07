@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     public Transform interactionTransform;
     Transform player;
     public float radius = 3f;
-    public  Canvas popup;
+    public Canvas popup;
     public virtual void Interact() { 
 
 
