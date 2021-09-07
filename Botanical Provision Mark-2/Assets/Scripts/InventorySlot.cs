@@ -101,7 +101,7 @@ public class InventorySlot : MonoBehaviour
 
 
             int amount = Int32.Parse(_amountText.text);
-      //      Debug.Log("remove" + item.itemName);
+            Debug.Log("remove" + item.itemName);
 
             amount--;
             if (amount == 0)

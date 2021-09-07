@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     public Transform interactionTransform;
     Transform player;
     public float radius = 3f;
-
+    public  Canvas popup;
     public virtual void Interact() { 
 
 
@@ -34,10 +34,17 @@ public class Interactable : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     
     }
+    void Start() {
+        popup.enabled = false;
+
+    }
     void Update() {
+        
         if (isFocus) {
             float distance = Vector3.Distance(player.position,transform.position);
             if (distance >= radius &&  !hasInteracted) {
+                popup.enabled = false;
+
                 Interact();
                    hasInteracted = true;
                 Debug.Log("interact");

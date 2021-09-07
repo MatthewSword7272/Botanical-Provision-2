@@ -13,8 +13,7 @@ public class Fruit : Item
 
         Debug.Log("override"+itemName);
         AddHealth(itemName);
-        Inventory inventory = FindObjectOfType<Inventory>();
-        inventory.Remove(this);
+       
 
 
     }
