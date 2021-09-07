@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
                 {
                     Slider healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
                     Slider hungerSlider = GameObject.Find("HungerSlider").GetComponent<Slider>();
-
+                    Debug.Log("left click");
                     if (interactable.name == "Berry Bush")
                     {
                         healthSlider.value += 25;

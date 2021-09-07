@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class InventoryUI : MonoBehaviour
                 slots[i].AddItem(inventory.items[i]);
             }
             else {
-                slots[i].ClearSlot();
+               if("1"==slots[i]._amountText.text) slots[i].ClearSlot();
             }
         }
     }

@@ -1,20 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[CreateAssetMenu(fileName = "New Fruit", menuName = "Inventory/Fruit")]
 
 public class Fruit : Item
 {
     private PlayerVitals playerVitals;
+ 
 
+  
+   public override void Use() {
+
+        Debug.Log("override"+itemName);
+        AddHealth(itemName);
+        Inventory inventory = FindObjectOfType<Inventory>();
+        inventory.Remove(this);
+
+
+    }
 
     public void AddHealth(string furit)
     {
-        if (furit == "Berry Bush")
+        playerVitals = FindObjectOfType<PlayerVitals>();
+
+        if (furit == "Berry")
         {
             playerVitals.healthSlider.value += 25;
             playerVitals.hungerSlider.value += 25;
         }
-        else if (furit == "Banana Tree")
+        else if (furit == "Banana")
         {
             playerVitals.healthSlider.value += 50;
             playerVitals.hungerSlider.value += 50;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
 
 public class InventorySlot : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class InventorySlot : MonoBehaviour
     Item item;
     public Button removeButton;
     public Text _amountText;
+
 
 
     public void AddItem(Item newItem) {
@@ -75,9 +78,19 @@ public class InventorySlot : MonoBehaviour
 
     }
     public void OnRemoveButton() {
+        int amount = Int32.Parse(_amountText.text);
         Debug.Log("remove" + item.itemName);
-        FindObjectOfType<Inventory>().Remove(item);
 
+        amount--;
+        if ( amount== 0)
+        {
+            FindObjectOfType<Inventory>().Remove(item);
+            _amountText.text = "";
+            return;
+
+        }
+        _amountText.text = amount.ToString();
+        
 
     }
     public void UseItem()
@@ -85,7 +98,23 @@ public class InventorySlot : MonoBehaviour
         if (item) {
 
             item.Use();
-        
+
+
+            int amount = Int32.Parse(_amountText.text);
+      //      Debug.Log("remove" + item.itemName);
+
+            amount--;
+            if (amount == 0)
+            {
+                FindObjectOfType<Inventory>().Remove(item);
+                _amountText.text = "";
+                return;
+
+            }
+            _amountText.text = amount.ToString();
+
+
+
         } 
     }
 }
