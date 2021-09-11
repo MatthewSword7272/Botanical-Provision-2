@@ -20,10 +20,8 @@ public class TreeGrow : MonoBehaviour
     {
         minScale = transform.localScale;
         postion = transform.localPosition;
-        this.GetComponent<MeshFilter>().mesh = _mesh[0];
-        this.GetComponent<Renderer>().material = _materials[0];
-
-
+        GetComponent<MeshFilter>().mesh = _mesh[0];
+        GetComponent<Renderer>().material = _materials[0];
     }
 
     // Update is called once per frame
@@ -44,10 +42,8 @@ public class TreeGrow : MonoBehaviour
 
         if (transform.localScale.x >= 1 && transform.localScale.x <= 2)
         {
-            this.GetComponent<MeshFilter>().mesh = _mesh[1];
-            this.GetComponent<Renderer>().material = _materials[1];
-           
-
+            GetComponent<MeshFilter>().mesh = _mesh[1];
+            GetComponent<Renderer>().material = _materials[1];
 
         }
         else if (transform.localScale.x >= 2 && transform.localScale.x <= 3)
