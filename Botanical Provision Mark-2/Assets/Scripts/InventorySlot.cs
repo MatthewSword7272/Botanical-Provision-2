@@ -8,7 +8,7 @@ using System;
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
-    Item item;
+   public Item item;
     public Button removeButton;
     public Text _amountText;
     Inventory inventory;
@@ -20,13 +20,14 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void AddItem(Item newItem) {
-        if (!item)
-        {
+       // if (!item)
+        //{
             item = newItem;
-            icon.sprite = item.icon;
+            icon.sprite = newItem.icon;
             icon.enabled = true;
             removeButton.interactable = true;
-        }
+        //}
+        /*
         else
         {
             if (item != newItem)
@@ -36,7 +37,8 @@ public class InventorySlot : MonoBehaviour
             }
 
             
-        }        
+        } 
+        */
         _amountText.text = item.itemAmount.ToString();
 
     }
@@ -51,9 +53,11 @@ public class InventorySlot : MonoBehaviour
             return;
         }
 
-        if (item.itemAmount - amount < 0)
-        {
-            Debug.LogWarning($"Not enough items in this slot to remove {amount}!", this);
+        if (item.itemAmount - amount <= 0)
+        {               inventory.Remove(item);
+
+              //   ClearSlot();
+            return;
         }
         else
         {
@@ -69,34 +73,29 @@ public class InventorySlot : MonoBehaviour
         // reset this slot
         if (amount <= 0)
         {
-            item = null;
-            icon.sprite = null;
-            icon.enabled = false;
+          
+
         }
     }
 
     public void ClearSlot(){
+        Debug.Log("Clearing slot");
         item = null;
         icon.sprite = null;
         icon.enabled = false;
         removeButton.interactable = false;
-
+        _amountText.text = "";
 
     }
     public void OnRemoveButton() {
         int amount = int.Parse(_amountText.text);
         Debug.Log("remove" + item.itemName);
 
-        amount--;
-        if ( amount == 0)
-        {
-            inventory.items.Remove(item);
-            _amountText.text = "";
+ 
             RemoveItem();
-            return;
+            
 
-        }
-        _amountText.text = amount.ToString();
+
         
 
     }
@@ -108,18 +107,9 @@ public class InventorySlot : MonoBehaviour
 
 
             int amount = Int32.Parse(_amountText.text);
-            Debug.Log("remove" + item.itemName);
+            Debug.Log("use " + item.itemName);
 
-            amount--;
-            if (amount == 0)
-            {
-                FindObjectOfType<Inventory>().Remove(item);
-                _amountText.text = "";
-                return;
-
-            }
-            _amountText.text = amount.ToString();
-
+            RemoveItem();
 
 
         } 
