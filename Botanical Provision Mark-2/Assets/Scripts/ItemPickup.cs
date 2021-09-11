@@ -11,7 +11,7 @@ public class ItemPickup : Interactable
     public Button Seed;
     public Button Fruit;
     public Button Close;
-    
+
     public override void Interact()
     {
         base.Interact();
@@ -20,10 +20,11 @@ public class ItemPickup : Interactable
     void Pick()
     {
         popup.enabled = true;
-      
+
         //add to inventory      
     }
-    public void SeedClicked() {
+    public void SeedClicked()
+    {
 
         FindObjectOfType<Inventory>().Add(items);
         Debug.Log("picking" + items.itemName);
@@ -34,7 +35,8 @@ public class ItemPickup : Interactable
         FindObjectOfType<Inventory>().Add(itemf);
         Debug.Log("picking" + itemf.itemName);
     }
-    public void CloseClicked() {
+    public void CloseClicked()
+    {
         popup.enabled = false;
     }
 }

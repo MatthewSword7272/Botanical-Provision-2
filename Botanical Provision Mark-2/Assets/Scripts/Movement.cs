@@ -72,14 +72,15 @@ public class Movement : MonoBehaviour
 
                     }
                     // motor.MovetoPoint(hit.point);
-                    
+
 
 
                 }
             }
         }
-        //press E to get Fruit
-        if (Input.GetMouseButtonDown(1)) {
+        //press Left-Mouse Button to get Fruit
+        if (Input.GetMouseButtonDown(1))
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
@@ -95,16 +96,18 @@ public class Movement : MonoBehaviour
         }
 
     }
-        void SetFocus(Interactable newFocus) {
-            focus = newFocus;
-        if (newFocus != focus) {
-            if (focus != null)focus.OnDefocus();
+    void SetFocus(Interactable newFocus)
+    {
+        focus = newFocus;
+        if (newFocus != focus)
+        {
+            if (focus != null) focus.OnDefocus();
             {
                 focus = newFocus;
             }
         }
         newFocus.OnFocus(transform);
-        }
+    }
     void RemoveFocus()
     {
 
@@ -115,5 +118,5 @@ public class Movement : MonoBehaviour
         }
 
     }
-    
+
 }

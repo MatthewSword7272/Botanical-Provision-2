@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName="new Item",menuName="Inventory/Item")]
+[CreateAssetMenu(fileName = "new Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
     public string itemName = "itemname";
@@ -10,9 +10,9 @@ public class Item : ScriptableObject
     public int itemAmount = 1;
     public int maxStack = 9;
 
-    public virtual void Use() {
-
-        Debug.Log("Using "+itemName);
+    public virtual void Use()
+    {
+        Debug.Log("Using " + itemName);
     }
-   
+
 }

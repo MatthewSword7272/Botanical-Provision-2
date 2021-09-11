@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class TreeGrow : MonoBehaviour
 {
-
-    Vector3 minScale;
+    private Vector3 minScale;
     public Vector3 maxScale;
-    Vector3 postion;
-    public bool repeatbale;
+    private Vector3 postion;
     public float speed = 2f;
     public float duration = 5f;
     public List<Mesh> _mesh;
     public List<Material> _materials;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +29,14 @@ public class TreeGrow : MonoBehaviour
 
         if (transform.localScale.x >= 2)
         {
-            transform.localScale = new Vector3(2, 2, 2); 
+            transform.localScale = new Vector3(2, 2, 2);
         }
         else
         {
             float rate = Time.deltaTime / 20;
             transform.localScale += new Vector3(rate, rate, rate);
         }
-        
+
 
         if (transform.localScale.x >= 1 && transform.localScale.x <= 2)
         {

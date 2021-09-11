@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
                     if (items[i].name == item.name)
                     {
                         ++items[i].itemAmount;
-                        
+
                     }
                 }
             }
@@ -53,9 +53,10 @@ public class Inventory : MonoBehaviour
     }
     public void Remove(Item item)
     {
-        Debug.Log("Remove Item"+items.Count);
+        Debug.Log("Remove Item" + items.Count);
 
-        foreach (Item i in items) {
+        foreach (Item i in items)
+        {
             Debug.Log(item.itemName);
             if (i.itemName == item.itemName)
             {

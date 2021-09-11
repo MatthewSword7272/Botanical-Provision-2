@@ -6,10 +6,11 @@ using UnityEngine;
 public class Fruit : Item
 {
     private PlayerVitals playerVitals;
-  
-   public override void Use() {
 
-        Debug.Log("override"+itemName);
+    public override void Use()
+    {
+
+        Debug.Log("override" + itemName);
         AddHealth(itemName);
 
     }
