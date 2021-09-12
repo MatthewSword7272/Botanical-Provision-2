@@ -8,7 +8,6 @@ public class TreeGrow : MonoBehaviour
     public Vector3 maxScale;
     private Vector3 postion;
     public float speed = 2f;
-    public float duration = 5f;
     public List<Mesh> _mesh;
     public List<Material> _materials;
 
