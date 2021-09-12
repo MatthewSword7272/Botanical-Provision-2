@@ -22,6 +22,7 @@ public class Interactable : MonoBehaviour
         isFocus = true;
         hasInteracted = false;
         player = playerTransform;
+        Interact();
     }
     public void OnDefocus()
     {

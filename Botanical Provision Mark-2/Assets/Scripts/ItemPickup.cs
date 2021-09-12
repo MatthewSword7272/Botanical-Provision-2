@@ -20,7 +20,7 @@ public class ItemPickup : Interactable
 
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 2)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3)
         {
             base.Interact();
             Pick();
