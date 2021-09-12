@@ -15,16 +15,16 @@ public class Fruit : Item
 
     }
 
-    public void AddHealth(string furit)
+    public void AddHealth(string fruit)
     {
         playerVitals = FindObjectOfType<PlayerVitals>();
 
-        if (furit == "Berry")
+        if (fruit == "Berry")
         {
             playerVitals.healthSlider.value += 25;
             playerVitals.hungerSlider.value += 25;
         }
-        else if (furit == "Banana")
+        else if (fruit == "Banana")
         {
             playerVitals.healthSlider.value += 50;
             playerVitals.hungerSlider.value += 50;
