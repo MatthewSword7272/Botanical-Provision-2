@@ -38,13 +38,13 @@ public class TreeGrow : MonoBehaviour
         }
 
 
-        if (transform.localScale.x >= 1 && transform.localScale.x <= 2)
+        if (transform.localScale.x >= 1 && transform.localScale.x < 2)
         {
             GetComponent<MeshFilter>().mesh = _mesh[1];
             GetComponent<Renderer>().material = _materials[1];
 
         }
-        else if (transform.localScale.x >= 2 && transform.localScale.x <= 3)
+        else if (transform.localScale.x >= 2 && transform.localScale.x < 2)
         {
             GetComponent<MeshFilter>().mesh = _mesh[2];
             GetComponent<Renderer>().material = _materials[2];
