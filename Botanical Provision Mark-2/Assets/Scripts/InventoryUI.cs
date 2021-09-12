@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -34,7 +34,8 @@ public class InventoryUI : MonoBehaviour
         Debug.Log("update ui");
 
 
-        foreach (Item i in inventory.items){
+        foreach (Item i in inventory.items)
+        {
 
             Debug.Log(i.itemName);
         }
@@ -43,18 +44,17 @@ public class InventoryUI : MonoBehaviour
         {
             if (i < inventory.items.Count)
             {
-                Debug.Log("add"+i);
+                Debug.Log("add" + i);
                 slots[i].AddItem(inventory.items[i]);
-          
+
 
             }
-            else  {
+            else
+            {
                 Debug.Log("clear" + i);
                 slots[i].ClearSlot();
 
             }
-
-
 
         }
     }
