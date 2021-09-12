@@ -11,11 +11,20 @@ public class ItemPickup : Interactable
     public Button Seed;
     public Button Fruit;
     public Button Close;
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     public override void Interact()
     {
-        base.Interact();
-        Pick();
+        if (Vector2.Distance(transform.position, player.transform.position) < 2)
+        {
+            base.Interact();
+            Pick();
+        }
     }
     void Pick()
     {
@@ -25,7 +34,6 @@ public class ItemPickup : Interactable
     }
     public void SeedClicked()
     {
-
         FindObjectOfType<Inventory>().Add(items);
         Debug.Log("picking" + items.itemName);
     }
