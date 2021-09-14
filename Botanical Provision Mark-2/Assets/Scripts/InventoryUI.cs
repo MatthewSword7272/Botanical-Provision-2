@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -55,6 +55,8 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
 
             }
+
+
 
         }
     }

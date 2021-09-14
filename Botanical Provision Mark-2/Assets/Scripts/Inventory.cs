@@ -33,7 +33,9 @@ public class Inventory : MonoBehaviour
                 {
                     if (items[i].name == item.name)
                     {
+
                         ++items[i].itemAmount;
+
 
                     }
                 }
@@ -44,11 +46,13 @@ public class Inventory : MonoBehaviour
                 item.itemAmount = 1;
             }
 
+
             if (onItemChangedCallback != null)
             {
                 onItemChangedCallback.Invoke();
             }
         }
+
 
     }
     public void Remove(Item item)
@@ -73,5 +77,6 @@ public class Inventory : MonoBehaviour
         }
 
     }
+    public void Test() { }
 
 }
