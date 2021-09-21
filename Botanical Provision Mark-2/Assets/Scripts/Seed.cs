@@ -12,7 +12,7 @@ public class Seed : Item
         Debug.Log("override" + itemName);
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Instantiate(TreePrefab, new Vector3(player.transform.position.x, 0, player.transform.position.z + 1), Quaternion.identity);
+        Instantiate(TreePrefab, new Vector3(player.transform.position.x, 0, player.transform.position.z + 16), Quaternion.identity);
 
     }
 }
