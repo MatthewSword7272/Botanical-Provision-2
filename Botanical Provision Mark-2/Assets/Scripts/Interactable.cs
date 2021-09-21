@@ -13,7 +13,6 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
 
-
     }
 
     public void OnFocus(Transform playerTransform)
@@ -55,7 +54,6 @@ public class Interactable : MonoBehaviour
             {
                 popup.enabled = false;
 
-                Interact();
                 hasInteracted = true;
                 Debug.Log("interact");
             }

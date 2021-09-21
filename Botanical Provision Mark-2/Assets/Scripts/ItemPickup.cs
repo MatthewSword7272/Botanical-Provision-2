@@ -23,14 +23,8 @@ public class ItemPickup : Interactable
         if (Vector2.Distance(transform.position, player.transform.position) < 3)
         {
             base.Interact();
-            Pick();
+            popup.enabled = true;
         }
-    }
-    void Pick()
-    {
-        popup.enabled = true;
-
-        //add to inventory      
     }
     public void SeedClicked()
     {
