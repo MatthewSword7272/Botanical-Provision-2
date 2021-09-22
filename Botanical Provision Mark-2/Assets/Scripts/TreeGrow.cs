@@ -40,6 +40,7 @@ public class TreeGrow : MonoBehaviour
 
         if (transform.localScale.x >= 1 && transform.localScale.x < 2)
         {
+
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
