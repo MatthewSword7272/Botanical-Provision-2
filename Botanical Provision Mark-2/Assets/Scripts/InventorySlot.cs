@@ -17,6 +17,7 @@ public class InventorySlot : MonoBehaviour
     private void Start()
     {
         inventory = Inventory.instance;
+        
     }
 
     public void AddItem(Item newItem)
@@ -96,9 +97,6 @@ public class InventorySlot : MonoBehaviour
 
 
         RemoveItem();
-
-
-
 
 
     }

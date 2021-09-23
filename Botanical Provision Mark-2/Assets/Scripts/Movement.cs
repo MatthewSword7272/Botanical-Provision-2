@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groudMask;
     bool isGrounded;
+    public bool playerInZone = false;
 
 
     // Update is called once per frame
