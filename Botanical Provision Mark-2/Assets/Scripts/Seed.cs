@@ -26,5 +26,5 @@ public class Seed : Item
             Debug.Log("Player Outside Zone");
         }
 
-    }
+   }
 }
