@@ -11,6 +11,8 @@ public class ItemPickup : Interactable
     public Button Seed;
     public Button Fruit;
     public Button Close;
+    public bool grown = true;
+    public TreeGrow t;
     private GameObject player;
 
     private void Awake()
@@ -20,12 +22,41 @@ public class ItemPickup : Interactable
 
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 & grown)
         {
             base.Interact();
             popup.enabled = true;
         }
+        else
+        {
+            waterplant();
+        }
     }
+    public void waterplant() {
+
+        Debug.Log("wat");
+        base.Interact();
+        if (t.firstWater == false)
+        {
+            t.firstWater = true;
+            StartCoroutine(ShowMessage());
+
+        }
+        else if (t.secoundWater == false)
+        {
+            t.secoundWater = true;
+            StartCoroutine(ShowMessage());
+
+        }
+    }
+
+    IEnumerator ShowMessage()
+    {
+        popup.enabled = true;
+        yield return new WaitForSeconds(5);
+        popup.enabled = false;
+    }
+
     public void SeedClicked()
     {
         FindObjectOfType<Inventory>().Add(items);

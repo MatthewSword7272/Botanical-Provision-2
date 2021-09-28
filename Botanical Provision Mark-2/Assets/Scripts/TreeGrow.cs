@@ -10,6 +10,9 @@ public class TreeGrow : MonoBehaviour
     public float speed = 2f;
     public List<Mesh> _mesh;
     public List<Material> _materials;
+    public ItemPickup pick;
+    
+    public bool firstWater = false, secoundWater = false;
 
 
     // Start is called before the first frame update
@@ -20,6 +23,9 @@ public class TreeGrow : MonoBehaviour
         postion = transform.localPosition;
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];
         GetComponentInChildren<Renderer>().material = _materials[0];
+        pick.popup.enabled = false;
+        pick.grown = false;
+
     }
 
     // Update is called once per frame
@@ -27,29 +33,35 @@ public class TreeGrow : MonoBehaviour
     {
         postion = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
-        if (transform.localScale.x >= 2)
+        if (transform.localScale.x >= 2 )
         {
+            Debug.Log("tree grow z");
+
             transform.localScale = new Vector3(2, 2, 2);
         }
         else
         {
+            Debug.Log("tree grow 2" );
+
             float rate = Time.deltaTime / 20;
             transform.localScale += new Vector3(rate, rate, rate);
         }
 
 
-        if (transform.localScale.x >= 1 && transform.localScale.x < 2)
+        if (transform.localScale.x >= 1 && transform.localScale.x < 2 &&firstWater==true)
         {
+            Debug.Log("tree grow 3");
 
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
         }
-        else if (transform.localScale.x >= 2)
+        else if (transform.localScale.x >= 2 && secoundWater==true)
         {
+            Debug.Log("tree grow 4");
             GetComponentInChildren<MeshFilter>().mesh = _mesh[2];
             GetComponentInChildren<Renderer>().material = _materials[2];
-
+            pick.grown = true;
         }
 
     }
