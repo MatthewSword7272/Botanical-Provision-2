@@ -11,24 +11,24 @@ public class ItemPickup : Interactable
     public Button Seed;
     public Button Fruit;
     public Button Close;
-    public bool grown = true;
     private GameObject player;
-    public TreeGrow t;
+    private TreeGrow treegrow;
     public Slider water;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        treegrow = FindObjectOfType<TreeGrow>();
     }
 
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && t.grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && treegrow.grown)
         {
             base.Interact();
             popup.enabled = true;
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !t.grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !treegrow.grown)
         {
             Debug.Log("else if ");
             base.Interact();
@@ -38,23 +38,26 @@ public class ItemPickup : Interactable
     }
     void Water() {
         bool enough=false;
-        if (water.value >= 20) enough = true;
+        if (water.value >= 20)
+        {
+            enough = true;
+        }
         Debug.Log("wat");
-        if (t.firstWater == false&& enough)
+        if (treegrow.firstWater == false&& enough)
         {
             Debug.Log("first water ");
 
-            t.firstWater = true;
+            treegrow.firstWater = true;
             water.value = water.value - 20;
 
         }
-        else if (t.secoundWater == false && enough)
+        else if (treegrow.secoundWater == false && enough)
         {
             Debug.Log("first water ");
 
             water.value = water.value - 20;
 
-            t.secoundWater = true;
+            treegrow.secoundWater = true;
 
         }
     }
