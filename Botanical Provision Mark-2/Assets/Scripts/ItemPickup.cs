@@ -46,7 +46,6 @@ public class ItemPickup : Interactable
 
             t.firstWater = true;
             water.value = water.value - 20;
-            StartCoroutine(ShowMessage());
 
         }
         else if (t.secoundWater == false && enough)
@@ -56,16 +55,10 @@ public class ItemPickup : Interactable
             water.value = water.value - 20;
 
             t.secoundWater = true;
-            StartCoroutine(ShowMessage());
 
         }
     }
-    IEnumerator ShowMessage()
-    {
-        popup.enabled = true;
-        yield return new WaitForSeconds(5);
-        popup.enabled = false;
-    }
+  
 
     public void SeedClicked()
     {
