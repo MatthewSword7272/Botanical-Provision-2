@@ -11,8 +11,10 @@ public class TreeGrow : MonoBehaviour
     public List<Mesh> _mesh;
     public List<Material> _materials;
     public ItemPickup pick;
-    
-    public bool firstWater = false, secoundWater = false;
+    int treeState = 1;
+    public bool grown=false;
+    public bool firstWater = false;
+    public bool secoundWater = false;
 
 
     // Start is called before the first frame update
@@ -23,33 +25,40 @@ public class TreeGrow : MonoBehaviour
         postion = transform.localPosition;
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];
         GetComponentInChildren<Renderer>().material = _materials[0];
-        pick.popup.enabled = false;
-        pick.grown = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        postion = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
-        if (transform.localScale.x >= 2 )
+        postion = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        //if  grown
+        if (transform.localScale.x >= 2 && treeState == 3)
         {
-            Debug.Log("tree grow z");
+            grown = true;
 
             transform.localScale = new Vector3(2, 2, 2);
         }
+        //if waiting to be watered
+        else if ((treeState==1&& transform.localScale.x>1)||(treeState==2 && transform.localScale.x>2)) {
+            Debug.Log("waiting to be watered");
+        
+        }
+
+        //if ready to keep getting bigger
         else
         {
-            Debug.Log("tree grow 2" );
+            Debug.Log("tree grow 2");
 
             float rate = Time.deltaTime / 20;
             transform.localScale += new Vector3(rate, rate, rate);
         }
 
 
-        if (transform.localScale.x >= 1 && transform.localScale.x < 2 &&firstWater==true)
+        if ((transform.localScale.x >= 1 && transform.localScale.x < 2 )&&firstWater==true)
         {
+            treeState = 2;
             Debug.Log("tree grow 3");
 
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
@@ -58,10 +67,10 @@ public class TreeGrow : MonoBehaviour
         }
         else if (transform.localScale.x >= 2 && secoundWater==true)
         {
+            treeState = 3;
             Debug.Log("tree grow 4");
             GetComponentInChildren<MeshFilter>().mesh = _mesh[2];
             GetComponentInChildren<Renderer>().material = _materials[2];
-            pick.grown = true;
         }
 
     }

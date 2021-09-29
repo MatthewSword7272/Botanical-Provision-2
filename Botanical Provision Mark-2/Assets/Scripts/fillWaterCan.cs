@@ -1,32 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class fillWaterCan : Interactable
 {
-    int water = 0;
+    private PlayerVitals playerVitals;
+    public Slider waterSlider;
 
-  void  Start() {
-        popup.enabled = false;
+
+    void Start() {
 
     }
 
     public override void Interact()
     {
             base.Interact();
-            water = 100;
-        StartCoroutine(ShowMessage());
+
+        playerVitals = FindObjectOfType<PlayerVitals>();
+        waterSlider.value += 100;
+
+
+
         Debug.Log("water");
     }
 
 
-    IEnumerator ShowMessage()
-    {
-        popup.enabled = true;
-        yield return new WaitForSeconds(5);
-        popup.enabled = false;
-    }
-
+   
 
 
 

@@ -12,9 +12,9 @@ public class ItemPickup : Interactable
     public Button Fruit;
     public Button Close;
     public bool grown = true;
-    public TreeGrow t;
     private GameObject player;
-
+    public TreeGrow t;
+    public Slider water;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,34 +22,44 @@ public class ItemPickup : Interactable
 
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 & grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && t.grown)
         {
             base.Interact();
             popup.enabled = true;
         }
-        else
-        {
-            waterplant();
-        }
-    }
-    public void waterplant() {
 
-        Debug.Log("wat");
-        base.Interact();
-        if (t.firstWater == false)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !t.grown)
         {
+            Debug.Log("else if ");
+            base.Interact();
+            Water(); 
+        }
+       
+    }
+    void Water() {
+        bool enough=false;
+        if (water.value >= 20) enough = true;
+        Debug.Log("wat");
+        if (t.firstWater == false&& enough)
+        {
+            Debug.Log("first water ");
+
             t.firstWater = true;
+            water.value = water.value - 20;
             StartCoroutine(ShowMessage());
 
         }
-        else if (t.secoundWater == false)
+        else if (t.secoundWater == false && enough)
         {
+            Debug.Log("first water ");
+
+            water.value = water.value - 20;
+
             t.secoundWater = true;
             StartCoroutine(ShowMessage());
 
         }
     }
-
     IEnumerator ShowMessage()
     {
         popup.enabled = true;
