@@ -26,6 +26,8 @@ public class ItemPickup : Interactable
         {
             base.Interact();
             popup.enabled = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && !treegrow.grown)
@@ -77,5 +79,7 @@ public class ItemPickup : Interactable
     public void CloseClicked()
     {
         popup.enabled = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
