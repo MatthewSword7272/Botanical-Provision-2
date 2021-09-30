@@ -41,7 +41,8 @@ public class TreeGrow : MonoBehaviour
             transform.localScale = new Vector3(2, 2, 2);
         }
         //if waiting to be watered
-        else if ((treeState == 1 && transform.localScale.x > 1)||(treeState == 2 && transform.localScale.x > 2)) {
+        else if ((treeState ==1 && transform.localScale.x > 1)||(treeState == 2 && transform.localScale.x > 2)) {
+            Debug.Log("waiting to be watered");
         
         }
 

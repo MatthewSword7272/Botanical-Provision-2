@@ -114,10 +114,15 @@ public class InventorySlot : MonoBehaviour
             Debug.Log("use " + item.itemName);
 
 
-            if (playerMovement.playerInZone || !item.itemName.Contains("Seed"))
+           if (!playerMovement.playerInZone && item.itemName.Contains("Seed"))
+            {
+                
+            }
+            else
             {
                 RemoveItem();
             }
+
 
         }
     }
