@@ -12,14 +12,12 @@ public class InventorySlot : MonoBehaviour
     public Button removeButton;
     public Text _amountText;
     Inventory inventory;
-    private Movement playerMovement;
 
 
     private void Start()
     {
         inventory = Inventory.instance;
-        playerMovement = FindObjectOfType<Movement>();
-
+        
     }
 
     public void AddItem(Item newItem)
@@ -113,15 +111,7 @@ public class InventorySlot : MonoBehaviour
             int amount = Int32.Parse(_amountText.text);
             Debug.Log("use " + item.itemName);
 
-
-           if (!playerMovement.playerInZone && item.itemName.Contains("Seed"))
-            {
-                
-            }
-            else
-            {
-                RemoveItem();
-            }
+            RemoveItem();
 
 
         }
