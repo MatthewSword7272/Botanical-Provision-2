@@ -19,11 +19,6 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     public bool playerInZone = false;
 
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
 
     // Update is called once per frame
     void Update()
@@ -68,31 +63,19 @@ public class Movement : MonoBehaviour
                     Debug.Log("left click");
                     if (interactable.name == "Berry Bush")
                     {
-                        healthSlider.value += 10;
-                        hungerSlider.value += 10;
-                    }
-                    else if (interactable.name == "Banana Tree")
-                    {
-                        healthSlider.value += 30;
-                        hungerSlider.value += 30;
-
-                    }
-                    else if (interactable.name == "Apple Table")
-                    {
-                        healthSlider.value += 15;
-                        hungerSlider.value += 15;
-                    }
-                    else if (interactable.name == "Carrot Patch")
-                    {
-                        healthSlider.value += 20;
-                        hungerSlider.value += 20;
-                    }
-                    else if (interactable.name == "Lettuce Patch")
-                    {
                         healthSlider.value += 25;
                         hungerSlider.value += 25;
                     }
+                    else if (interactable.name == "Banana Tree")
+                    {
+                        healthSlider.value += 50;
+                        hungerSlider.value += 50;
+
+                    }
                     // motor.MovetoPoint(hit.point);
+
+
+
                 }
             }
         }
