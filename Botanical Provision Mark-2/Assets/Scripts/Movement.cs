@@ -19,6 +19,11 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     public bool playerInZone = false;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     // Update is called once per frame
     void Update()
@@ -58,24 +63,7 @@ public class Movement : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
-                    Slider healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
-                    Slider hungerSlider = GameObject.Find("HungerSlider").GetComponent<Slider>();
                     Debug.Log("left click");
-                    if (interactable.name == "Berry Bush")
-                    {
-                        healthSlider.value += 25;
-                        hungerSlider.value += 25;
-                    }
-                    else if (interactable.name == "Banana Tree")
-                    {
-                        healthSlider.value += 50;
-                        hungerSlider.value += 50;
-
-                    }
-                    // motor.MovetoPoint(hit.point);
-
-
-
                 }
             }
         }

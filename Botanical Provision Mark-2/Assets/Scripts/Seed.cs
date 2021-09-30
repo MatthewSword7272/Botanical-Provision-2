@@ -8,14 +8,11 @@ public class Seed : Item
     private GameObject player;
     public GameObject TreePrefab;
     private Movement playerMovement;
-    private GameObject text;
 
-    
     public override void Use()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = FindObjectOfType<Movement>();
-        text = GameObject.Find("MessageText");
 
         Debug.Log("override" + itemName);
 
@@ -27,7 +24,6 @@ public class Seed : Item
         else 
         {
             Debug.Log("Player Outside Zone");
-            text.GetComponent<Text>().text = "Cannot plant seed here";
             return;
         }
 

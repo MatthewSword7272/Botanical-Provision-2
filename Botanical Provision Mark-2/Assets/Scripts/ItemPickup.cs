@@ -13,13 +13,14 @@ public class ItemPickup : Interactable
     public Button Close;
     private GameObject player;
     public GameObject water;
+    private GameObject inventory;
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
-    private void Awake()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-     
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
       //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
     }
@@ -32,6 +33,9 @@ public class ItemPickup : Interactable
             base.Interact();
             popup.enabled = true;
             secoundWater = true;
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 
         }
 
@@ -81,5 +85,10 @@ public class ItemPickup : Interactable
     public void CloseClicked()
     {
         popup.enabled = false;
+        if (inventory.activeSelf)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
