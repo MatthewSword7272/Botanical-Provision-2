@@ -86,8 +86,16 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            if (Cursor.visible)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else 
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
 
 
