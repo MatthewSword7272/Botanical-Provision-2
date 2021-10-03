@@ -84,6 +84,13 @@ public class Movement : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+
     }
     void SetFocus(Interactable newFocus)
     {

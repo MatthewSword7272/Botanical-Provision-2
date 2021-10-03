@@ -32,11 +32,11 @@ public class InventoryUI : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
-            else if (!inventoryUI.activeSelf && !popup.enabled)
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            //else if (!inventoryUI.activeSelf && !popup.enabled)
+            //{
+            //    Cursor.visible = false;
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //}
         }  
 
     }
