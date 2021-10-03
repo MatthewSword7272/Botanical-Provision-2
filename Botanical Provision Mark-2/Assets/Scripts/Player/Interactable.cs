@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance >= radius && !hasInteracted)
             {
-               // popup.enabled = true;
+               popup.enabled = true;
 
                 hasInteracted = true;
                 Debug.Log("interact");

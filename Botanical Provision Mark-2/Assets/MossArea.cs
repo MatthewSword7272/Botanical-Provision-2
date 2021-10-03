@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class MossArea : MonoBehaviour
 {
-    private GameObject player;
-
-   
-
+ 
     private void OnTriggerEnter(Collider colliderPlayer)
     {
         if (colliderPlayer.gameObject.tag == "Player")
