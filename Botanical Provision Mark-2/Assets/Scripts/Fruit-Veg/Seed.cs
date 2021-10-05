@@ -28,7 +28,7 @@ public class Seed : Item
         {
             Debug.Log("Player Outside Zone");
             text.GetComponent<Text>().text = "Cannot plant seed here";
-            text.GetComponent<Text>().color = Color.black;
+            text.GetComponent<Text>().color = Color.white;
 
             return;
         }
