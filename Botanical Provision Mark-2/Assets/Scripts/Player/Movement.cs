@@ -35,6 +35,15 @@ public class Movement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 12f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 6f;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;

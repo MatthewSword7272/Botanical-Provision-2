@@ -15,7 +15,7 @@ public class fillWaterCan : Interactable
 
     public override void Interact()
     {
-            base.Interact();
+        base.Interact();
 
         playerVitals = FindObjectOfType<PlayerVitals>();
         waterSlider.value += 100;
