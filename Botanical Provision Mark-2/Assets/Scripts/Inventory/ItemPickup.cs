@@ -17,12 +17,14 @@ public class ItemPickup : Interactable
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
+    public Animation anim;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
       //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
+        anim = FindObjectOfType<Animation>();
     }
 
     public override void Interact()
@@ -36,6 +38,7 @@ public class ItemPickup : Interactable
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            anim.GatherOn();
 
         }
 
@@ -89,6 +92,7 @@ public class ItemPickup : Interactable
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            anim.GatherOff();
         }
     }
 }
