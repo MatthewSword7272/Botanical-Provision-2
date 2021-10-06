@@ -112,15 +112,5 @@ public class Movement : MonoBehaviour
         }
         newFocus.OnFocus(transform);
     }
-    void RemoveFocus()
-    {
-
-        if (focus != null)
-        {
-            focus.OnDefocus();
-            focus = null;
-        }
-
-    }
 
 }

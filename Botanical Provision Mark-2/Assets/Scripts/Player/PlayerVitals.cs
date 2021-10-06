@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerVitals : MonoBehaviour
@@ -12,10 +13,11 @@ public class PlayerVitals : MonoBehaviour
     public Slider hungerSlider;
     public int maxHunger;
     private readonly int hungerFallRate = 3;
+    public static string PreviousSence;
 
 
- //   public int maxWater;
-  //  private readonly int hungerFallRate = 3;
+    //   public int maxWater;
+    //  private readonly int hungerFallRate = 3;
 
 
     private void Start()
@@ -64,6 +66,7 @@ public class PlayerVitals : MonoBehaviour
 
     void CharacterDeath()
     {
+        SceneManager.LoadScene("Game Over");
 
     }
 

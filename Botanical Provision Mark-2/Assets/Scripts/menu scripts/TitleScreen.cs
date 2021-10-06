@@ -12,24 +12,19 @@ public class TitleScreen : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void PlayGameSpeedUp()
+    public void Credits()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
-    public void Credits()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
-    }
-
     public void HowToPlay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
 
     public void QuitGame()
     {
-        Application.Quit();
+        Application.Quit(1);
     }
 }
