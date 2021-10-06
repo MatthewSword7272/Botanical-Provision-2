@@ -5,7 +5,7 @@ public class Interactable : MonoBehaviour
 {
     //object interactivity radius 
     bool isFocus = false;
- public   bool hasInteracted = false;
+    public bool hasInteracted = false;
     public Transform interactionTransform;
     Transform player;
     public float radius = 3f;
@@ -41,7 +41,7 @@ public class Interactable : MonoBehaviour
     }
     void Start()
     {
-        
+
         popup = GameObject.FindGameObjectWithTag("popup").GetComponent<Canvas>();
         popup.enabled = false;
 
@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance >= radius && !hasInteracted)
             {
-               popup.enabled = true;
+                popup.enabled = true;
 
                 hasInteracted = true;
                 Debug.Log("interact");

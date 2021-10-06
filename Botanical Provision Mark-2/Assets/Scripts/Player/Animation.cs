@@ -44,4 +44,23 @@ public class Animation : MonoBehaviour
         }
       
     }
+
+    public void GatherOn()
+    {
+        anim.SetBool("Gathering", true);
+        anim.SetBool("Walk", false);
+        anim.SetBool("Idle", false);
+    }
+
+    public void GatherOff()
+    {
+        anim.SetBool("Gathering", false);
+        anim.SetBool("Walk", false);
+        anim.SetBool("Idle", true);
+    }
+
+    public void Water()
+    {
+        anim.SetBool("Water", true);
+    }
 }
