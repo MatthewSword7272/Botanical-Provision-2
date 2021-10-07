@@ -7,7 +7,7 @@ public class TreeGrow : MonoBehaviour
     private Vector3 minScale;
     public Vector3 maxScale;
     private Vector3 postion;
-    public float speed = 2f;
+    public float speed;
     public List<Mesh> _mesh;
     public List<Material> _materials;
     public ItemPickup pick;
@@ -50,7 +50,7 @@ public class TreeGrow : MonoBehaviour
         {
             //Debug.Log("tree grow 2");
 
-            float rate = Time.deltaTime / 20;
+            float rate = Time.deltaTime / speed;
             transform.localScale += new Vector3(rate, rate, rate);
         }
 

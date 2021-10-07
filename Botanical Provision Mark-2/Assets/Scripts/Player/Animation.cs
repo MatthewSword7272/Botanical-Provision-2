@@ -21,7 +21,7 @@ public class Animation : MonoBehaviour
             anim.SetBool("Walk", true);
             anim.SetBool("Run", false);
         }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        if (!Input.anyKey && !anim.GetBool("Gathering"))
         {
             anim.SetBool("Walk", false);
             anim.SetBool("Idle", true);
