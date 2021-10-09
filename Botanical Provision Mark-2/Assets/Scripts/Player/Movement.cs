@@ -106,7 +106,7 @@ public class Movement : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-
+      
 
     }
     void SetFocus(Interactable newFocus)
