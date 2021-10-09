@@ -5,21 +5,23 @@ using UnityEngine;
 public class TreeGrow : MonoBehaviour
 {
     private Vector3 minScale;
-    public Vector3 maxScale;
     private Vector3 postion;
     public float speed;
     public List<Mesh> _mesh;
     public List<Material> _materials;
     public ItemPickup pick;
     int treeState = 1;
- 
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         pick = GetComponentInChildren<ItemPickup>();
-        transform.localScale = new Vector3(0, 0, 0);
+        if (!gameObject.name.Contains("Grown"))
+        { 
+            transform.localScale = new Vector3(0, 0, 0);
+        }
         minScale = transform.localScale;
         postion = transform.localPosition;
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];

@@ -44,6 +44,11 @@ public class Fruit : Item
             playerVitals.healthSlider.value += 25;
             playerVitals.hungerSlider.value += 25;
         }
+        else if (fruit == "Corn")
+        {
+            playerVitals.healthSlider.value += 17;
+            playerVitals.hungerSlider.value += 17;
+        }
     }
 
 }
