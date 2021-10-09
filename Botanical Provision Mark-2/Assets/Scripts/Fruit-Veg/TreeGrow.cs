@@ -17,11 +17,8 @@ public class TreeGrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pick = GetComponentInChildren<ItemPickup>();
-        if (!gameObject.name.Contains("Grown"))
-        { 
-            transform.localScale = new Vector3(0, 0, 0);
-        }
+        pick = GetComponentInChildren<ItemPickup>();     
+        transform.localScale = new Vector3(0, 0, 0);      
         minScale = transform.localScale;
         postion = transform.localPosition;
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];
