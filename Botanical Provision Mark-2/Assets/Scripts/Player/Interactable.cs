@@ -46,20 +46,23 @@ public class Interactable : MonoBehaviour
         popup.enabled = false;
 
     }
-    //void Update()
-    //{
+   void Update()
+    {
+                Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-    //    if (isFocus)
-    //    {
-    //        float distance = Vector3.Distance(player.position, transform.position);
-    //        if (distance >= radius && !hasInteracted)
-    //        {
-    //            popup.enabled = true;
 
-    //            hasInteracted = true;
-    //            Debug.Log("interact");
-    //        }
-    //    }
-    //}
+        if (isFocus)
+        {
+            float distance = Vector3.Distance(player.position, transform.position);
+            if (distance >= radius && !hasInteracted)
+            {
+             //   popup.enabled = true;
 
+                hasInteracted = true;
+                Debug.Log("interact");
+            }
+        }
+    }
+   
 }
