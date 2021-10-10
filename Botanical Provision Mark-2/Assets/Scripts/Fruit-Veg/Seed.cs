@@ -8,13 +8,13 @@ public class Seed : Item
 {
     private GameObject player;
     public GameObject TreePrefab;
-    private Movement playerMovement;
+    private Player playerMovement;
     private GameObject text;
 
     public override void Use()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = FindObjectOfType<Movement>();
+        playerMovement = FindObjectOfType<Player>();
         text = GameObject.Find("MessageText");
 
         Debug.Log("override" + itemName);
