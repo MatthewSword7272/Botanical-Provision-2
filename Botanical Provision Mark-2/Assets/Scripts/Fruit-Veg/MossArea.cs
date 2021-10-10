@@ -9,7 +9,7 @@ public class MossArea : MonoBehaviour
     {
         if (colliderPlayer.gameObject.tag == "Player")
         {
-            colliderPlayer.GetComponent<Movement>().playerInZone = true;
+            colliderPlayer.GetComponent<Player>().playerInZone = true;
             
         }
         
@@ -19,7 +19,7 @@ public class MossArea : MonoBehaviour
     {
         if (colliderPlayer.gameObject.tag == "Player")
         {
-            colliderPlayer.GetComponent<Movement>().playerInZone = false;
+            colliderPlayer.GetComponent<Player>().playerInZone = false;
 
         }
     }
