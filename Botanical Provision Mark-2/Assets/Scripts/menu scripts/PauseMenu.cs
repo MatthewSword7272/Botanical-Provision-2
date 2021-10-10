@@ -68,8 +68,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-        Time.timeScale = 1f;
-        t.startt();
+        SceneManager.LoadScene("How to Play");
     }
 
     public void QuitGame()
