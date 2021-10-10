@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Movement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
