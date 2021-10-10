@@ -11,7 +11,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("Showcase Sence");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadMenu()
