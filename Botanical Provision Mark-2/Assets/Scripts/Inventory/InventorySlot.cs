@@ -11,7 +11,6 @@ public class InventorySlot : MonoBehaviour
     public Item item;
     public Button removeButton;
     public Text _amountText;
-    public Text namet;
     Inventory inventory;
     private Movement playerMovement;
 
@@ -31,7 +30,6 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = newItem.icon;
         icon.enabled = true;
         removeButton.interactable = true;
-        namet.text = newItem.itemName;
         //}
         /*
         else
@@ -91,7 +89,6 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
         removeButton.interactable = false;
-        namet.text = "";
         _amountText.text = "";
 
     }
