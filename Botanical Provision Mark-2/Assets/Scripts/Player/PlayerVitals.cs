@@ -66,7 +66,7 @@ public class PlayerVitals : MonoBehaviour
 
     void CharacterDeath()
     {
-        SceneManager.LoadScene("Game Over");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
 
     }
 
