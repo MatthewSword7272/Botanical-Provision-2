@@ -12,13 +12,13 @@ public class InventorySlot : MonoBehaviour
     public Button removeButton;
     public Text _amountText;
     Inventory inventory;
-    private Movement playerMovement;
+    private Player playerMovement;
 
 
     private void Start()
     {
         inventory = Inventory.instance;
-        playerMovement = FindObjectOfType<Movement>();
+        playerMovement = FindObjectOfType<Player>();
 
     }
 
