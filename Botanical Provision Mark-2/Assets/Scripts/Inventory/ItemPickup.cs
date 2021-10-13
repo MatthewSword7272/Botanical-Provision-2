@@ -110,10 +110,10 @@ public class ItemPickup : Interactable
  
     void OnMouseEnter()
     {
-        if (PauseMenu.GameIsPaused == false || inventory.activeSelf == false)
+        if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
         {
             startcolor = GetComponentInChildren<Renderer>().material.color;
-            GetComponentInChildren<Renderer>().material.color = new Color(255, 128, 0, 255);
+            GetComponentInChildren<Renderer>().material.color = Color.yellow;
         }
     }
     void OnMouseExit()

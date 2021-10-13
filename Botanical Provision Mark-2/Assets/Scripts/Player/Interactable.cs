@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour
     private bool isFocus = false;
     public bool hasInteracted = false;
     public Transform interactionTransform;
-    Transform player;
+    private Transform player;
     public float radius = 3f;
     public Canvas popup;
     public virtual void Interact()
