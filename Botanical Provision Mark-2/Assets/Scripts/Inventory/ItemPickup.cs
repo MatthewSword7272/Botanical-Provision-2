@@ -11,20 +11,23 @@ public class ItemPickup : Interactable
     public Button Seed;
     public Button Fruit;
     public Button Close;
-    private GameObject player;
+    private Player player;
     public GameObject water;
     private GameObject inventory;
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
     public Animation anim;
+    public GameObject Camera;
+
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
       //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
+        Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
     }
 
     public override void Interact()
@@ -39,6 +42,8 @@ public class ItemPickup : Interactable
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
+            player.playerInInventory = true;
+            Camera.SetActive(false);
 
         }
 
@@ -93,6 +98,8 @@ public class ItemPickup : Interactable
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             anim.GatherOff();
+            player.playerInInventory = false;
+            Camera.SetActive(true);
         }
     }
 }
