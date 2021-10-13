@@ -4,7 +4,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     //object interactivity radius 
-    bool isFocus = false;
+    private bool isFocus = false;
     public bool hasInteracted = false;
     public Transform interactionTransform;
     Transform player;
@@ -46,20 +46,4 @@ public class Interactable : MonoBehaviour
         popup.enabled = false;
 
     }
-    //void Update()
-    //{
-
-    //    if (isFocus)
-    //    {
-    //        float distance = Vector3.Distance(player.position, transform.position);
-    //        if (distance >= radius && !hasInteracted)
-    //        {
-    //            popup.enabled = true;
-
-    //            hasInteracted = true;
-    //            Debug.Log("interact");
-    //        }
-    //    }
-    //}
-
 }

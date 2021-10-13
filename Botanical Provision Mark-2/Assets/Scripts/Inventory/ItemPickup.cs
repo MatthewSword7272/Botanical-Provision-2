@@ -29,7 +29,6 @@ public class ItemPickup : Interactable
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
-        gameObject.GetComponent<Renderer>().enabled = true;
     }
 
     public override void Interact()
