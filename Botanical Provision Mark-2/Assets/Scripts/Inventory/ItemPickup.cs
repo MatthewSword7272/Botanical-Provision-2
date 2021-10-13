@@ -25,7 +25,7 @@ public class ItemPickup : Interactable
     {
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-      //  popup.enabled = false;
+        //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
@@ -52,15 +52,16 @@ public class ItemPickup : Interactable
         {
             Debug.Log("else if ");
             base.Interact();
-            Water(); 
+            Water();
         }
-       
+
     }
-    void Water() {
-        bool enough=false;
+    void Water()
+    {
+        bool enough = false;
         if (water.GetComponent<Slider>().value >= 20) enough = true;
         Debug.Log("wat");
-        if (firstWater == false&& enough)
+        if (firstWater == false && enough)
         {
             Debug.Log("first water ");
 
@@ -78,7 +79,7 @@ public class ItemPickup : Interactable
 
         }
     }
-  
+
 
     public void SeedClicked()
     {
@@ -102,12 +103,12 @@ public class ItemPickup : Interactable
             if (player.playerInInventory == false)
             {
                 Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;               
+                Cursor.lockState = CursorLockMode.Locked;
                 Camera.SetActive(true);
             }
         }
     }
- 
+
     void OnMouseEnter()
     {
         if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)

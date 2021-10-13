@@ -10,6 +10,10 @@ public class PauseMenu : MonoBehaviour
     public static bool HowToPlayBool = false;
     public GameObject pauseMenuUI;
     public GameObject HowtoPlayUI;
+
+    //use these for the button overlap
+    private Interactable interactable;
+    private bool pickupSwitch = false;
     //private AudioSource gameMusic;
 
     // Update is called once per frame
@@ -17,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         HowtoPlayUI.SetActive(false);
-
+        interactable = FindObjectOfType<Interactable>();
         //gameMusic = GameObject.Find("Music").GetComponent<AudioSource>();
 
     }
@@ -46,18 +50,20 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        
 
         //gameMusic.Play();
 
     }
 
-    public  void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0.0f;
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        
 
         //gameMusic.Pause();
 
