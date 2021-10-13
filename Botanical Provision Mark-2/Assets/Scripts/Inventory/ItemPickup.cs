@@ -19,6 +19,7 @@ public class ItemPickup : Interactable
     public bool secoundWater = false;
     public Animation anim;
     public GameObject Camera;
+    private Color startcolor;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class ItemPickup : Interactable
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
+        gameObject.GetComponent<Renderer>().enabled = true;
     }
 
     public override void Interact()
@@ -97,6 +99,7 @@ public class ItemPickup : Interactable
         {
             anim.GatherOff();
             player.playerInPickUp = false;
+            inventory.SetActive(false);
             if (player.playerInInventory == false)
             {
                 Cursor.visible = false;
@@ -105,4 +108,18 @@ public class ItemPickup : Interactable
             }
         }
     }
+ 
+    void OnMouseEnter()
+    {
+        if (PauseMenu.GameIsPaused == false || inventory.activeSelf == false)
+        {
+            startcolor = GetComponentInChildren<Renderer>().material.color;
+            GetComponentInChildren<Renderer>().material.color = new Color(255, 128, 0, 255);
+        }
+    }
+    void OnMouseExit()
+    {
+        GetComponentInChildren<Renderer>().material.color = startcolor;
+    }
+
 }
