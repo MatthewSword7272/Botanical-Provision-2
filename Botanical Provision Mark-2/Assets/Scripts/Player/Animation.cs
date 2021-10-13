@@ -5,42 +5,48 @@ using UnityEngine;
 public class Animation : MonoBehaviour
 {
     Animator anim;
+    Player player;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        if (!player.playerInInventory)
         {
-            anim.SetBool("Idle", false);
-            anim.SetBool("Walk", true);
-            anim.SetBool("Run", false);
-        }
-        if (!Input.anyKey && !anim.GetBool("Gathering"))
-        {
-            anim.SetBool("Walk", false);
-            anim.SetBool("Idle", true);
-            anim.SetBool("Run", false);
 
-        }
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+            {
+                anim.SetBool("Idle", false);
+                anim.SetBool("Walk", true);
+                anim.SetBool("Run", false);
+            }
+            if (!Input.anyKey && !anim.GetBool("Gathering"))
+            {
+                anim.SetBool("Walk", false);
+                anim.SetBool("Idle", true);
+                anim.SetBool("Run", false);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && anim.GetBool("Walk"))
-        {
-            anim.SetBool("Run", true);
-            anim.SetBool("Walk", false);
-            anim.SetBool("Idle", false);
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            anim.SetBool("Run", false);
-            anim.SetBool("Walk", true);
-            anim.SetBool("Idle", false);
+            }
 
+            if (Input.GetKeyDown(KeyCode.LeftShift) && anim.GetBool("Walk"))
+            {
+                anim.SetBool("Run", true);
+                anim.SetBool("Walk", false);
+                anim.SetBool("Idle", false);
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                anim.SetBool("Run", false);
+                anim.SetBool("Walk", true);
+                anim.SetBool("Idle", false);
+
+            }
         }
       
     }

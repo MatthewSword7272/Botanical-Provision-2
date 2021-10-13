@@ -10,6 +10,8 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryUI;
     InventorySlot[] slots;
     private Canvas popup;
+    public GameObject Camera;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         popup = GameObject.FindGameObjectWithTag("popup").GetComponent<Canvas>();
+        player = FindObjectOfType<Player>();
+
     }
 
     // Update is called once per frame
@@ -31,11 +35,15 @@ public class InventoryUI : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                Camera.SetActive(false);
+                player.playerInInventory = true;
             }
             else
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                Camera.SetActive(true);
+                player.playerInInventory = false;
             }
         }  
 
