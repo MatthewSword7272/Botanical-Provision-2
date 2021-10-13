@@ -7,14 +7,17 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
+    public static bool HowToPlayBool = false;
     public GameObject pauseMenuUI;
-    public Tutorial t;
+    public GameObject HowtoPlayUI;
     //private AudioSource gameMusic;
 
     // Update is called once per frame
     private void Start()
     {
         pauseMenuUI.SetActive(false);
+        HowtoPlayUI.SetActive(false);
+
         //gameMusic = GameObject.Find("Music").GetComponent<AudioSource>();
 
     }
@@ -68,7 +71,18 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-        SceneManager.LoadScene("How to Play");
+        if (HowToPlayBool)
+        {
+            HowtoPlayUI.SetActive(false);
+            HowToPlayBool = false;
+        }
+        else
+
+        {
+            HowtoPlayUI.SetActive(true);
+            HowToPlayBool = true;
+        }
+
     }
 
     public void QuitGame()
