@@ -40,10 +40,14 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                Camera.SetActive(true);
                 player.playerInInventory = false;
+
+                if (player.playerInPickUp == false)
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Camera.SetActive(true);                 
+                }
             }
         }  
 
