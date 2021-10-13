@@ -42,7 +42,7 @@ public class ItemPickup : Interactable
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
-            player.playerInInventory = true;
+            player.playerInPickUp = true;
             Camera.SetActive(false);
 
         }
@@ -95,11 +95,14 @@ public class ItemPickup : Interactable
         popup.enabled = false;
         if (inventory.activeSelf)
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
             anim.GatherOff();
-            player.playerInInventory = false;
-            Camera.SetActive(true);
+            player.playerInPickUp = false;
+            if (player.playerInInventory == false)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;               
+                Camera.SetActive(true);
+            }
         }
     }
 }
