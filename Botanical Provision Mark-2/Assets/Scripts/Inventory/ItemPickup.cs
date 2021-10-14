@@ -95,18 +95,17 @@ public class ItemPickup : Interactable
     public void CloseClicked()
     {
         popup.enabled = false;
-        if (inventory.activeSelf)
+
+        anim.GatherOff();
+        player.playerInPickUp = false;
+
+        if (!player.playerInInventory)
         {
-            anim.GatherOff();
-            player.playerInPickUp = false;
-            inventory.SetActive(false);
-            if (player.playerInInventory == false)
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                Camera.SetActive(true);
-            }
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Camera.SetActive(true);
         }
+
     }
 
     void OnMouseEnter()
