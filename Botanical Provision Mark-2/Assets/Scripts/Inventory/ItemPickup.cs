@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class ItemPickup : Interactable
     public bool secoundWater = false;
     public Animation anim;
     public GameObject Camera;
+    private CinemachineFreeLook _3rdCam;
     private Color startcolor;
 
     private void Start()
@@ -28,7 +30,7 @@ public class ItemPickup : Interactable
         //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
-        Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
+        _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
     }
 
     public override void Interact()
@@ -44,7 +46,7 @@ public class ItemPickup : Interactable
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
             player.playerInPickUp = true;
-            Camera.SetActive(false);
+            _3rdCam.gameObject.SetActive(false);
 
         }
 
@@ -103,7 +105,7 @@ public class ItemPickup : Interactable
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            Camera.SetActive(true);
+            _3rdCam.gameObject.SetActive(true);
         }
 
     }
