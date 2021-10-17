@@ -22,6 +22,9 @@ public class ItemPickup : Interactable
     public GameObject Camera;
     private CinemachineFreeLook _3rdCam;
     private Color startcolor;
+    public int NumOfSeeds = 9;
+    public int NumOfFruits = 9;
+    private NoSeedFruit noSeedFruit;
 
     private void Start()
     {
@@ -31,6 +34,7 @@ public class ItemPickup : Interactable
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
+        noSeedFruit = FindObjectOfType<NoSeedFruit>();
     }
 
     public override void Interact()
@@ -85,14 +89,29 @@ public class ItemPickup : Interactable
 
     public void SeedClicked()
     {
-        FindObjectOfType<Inventory>().Add(items);
-        Debug.Log("picking" + items.itemName);
+        if (NumOfSeeds == 0)
+        {
+            StartCoroutine(noSeedFruit.NoMore("Plant does not have seeds"));
+        }
+        else
+        {
+            FindObjectOfType<Inventory>().Add(items);
+            Debug.Log("picking" + items.itemName);
+            NumOfSeeds--;
+        }
     }
     public void FruitClicked()
     {
-
-        FindObjectOfType<Inventory>().Add(itemf);
-        Debug.Log("picking" + itemf.itemName);
+        if (NumOfFruits == 0)
+        {
+            StartCoroutine(noSeedFruit.NoMore("Plant does not have fruit"));
+        }
+        else
+        {
+            FindObjectOfType<Inventory>().Add(itemf);
+            Debug.Log("picking" + itemf.itemName);
+            NumOfFruits--;
+        }
     }
     public void CloseClicked()
     {
@@ -112,10 +131,13 @@ public class ItemPickup : Interactable
 
     void OnMouseEnter()
     {
-        if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3)
         {
-            startcolor = GetComponentInChildren<Renderer>().material.color;
-            GetComponentInChildren<Renderer>().material.color = Color.yellow;
+            if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
+            {
+                startcolor = GetComponentInChildren<Renderer>().material.color;
+                GetComponentInChildren<Renderer>().material.color = Color.yellow;
+            }
         }
     }
     void OnMouseExit()
