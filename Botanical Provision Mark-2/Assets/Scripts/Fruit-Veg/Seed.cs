@@ -10,27 +10,22 @@ public class Seed : Item
     public GameObject TreePrefab;
     private Player playerMovement;
     private GameObject text;
+    private NoSeedFruit noSeedFruit;
 
     public override void Use()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = FindObjectOfType<Player>();
-        text = GameObject.Find("MessageText");
+        noSeedFruit = FindObjectOfType<NoSeedFruit>();
 
-        Debug.Log("override" + itemName);
 
         if (playerMovement.playerInZone)
         {
-            Debug.Log("Worked");
-            text.GetComponent<Text>().text = "";
             Instantiate(TreePrefab, new Vector3(player.transform.position.x, 15, player.transform.position.z + 1), Quaternion.identity);
         }
         else 
         {
-            Debug.Log("Player Outside Zone");
-            text.GetComponent<Text>().text = "Cannot plant seed here";
-            text.GetComponent<Text>().color = Color.white;
-
+            noSeedFruit.NoMoreStart("Cannot plant seed here");
             return;
         }
 

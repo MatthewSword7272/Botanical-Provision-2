@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +10,12 @@ public class NoSeedFruit : MonoBehaviour
         text = GameObject.Find("MessageText");
     }
 
-    public IEnumerator NoMore(string message)
+    public void NoMoreStart(string message)
+    {
+        StartCoroutine(NoMore(message));
+    }
+
+    private IEnumerator NoMore(string message)
     {
         text.GetComponent<Text>().color = Color.white;
         text.GetComponent<Text>().text = message;

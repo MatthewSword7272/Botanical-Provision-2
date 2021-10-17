@@ -91,7 +91,7 @@ public class ItemPickup : Interactable
     {
         if (NumOfSeeds == 0)
         {
-            StartCoroutine(noSeedFruit.NoMore("Plant does not have seeds"));
+            noSeedFruit.NoMoreStart("Plant does not have seeds");
         }
         else
         {
@@ -104,7 +104,7 @@ public class ItemPickup : Interactable
     {
         if (NumOfFruits == 0)
         {
-            StartCoroutine(noSeedFruit.NoMore("Plant does not have fruit"));
+           noSeedFruit.NoMoreStart("Plant does not have fruit");
         }
         else
         {
