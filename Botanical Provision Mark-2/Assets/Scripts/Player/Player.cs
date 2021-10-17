@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     bool isGrounded;
     public bool playerInZone = false;
     public bool playerInInventory = false;
+    public bool playerInPickUp = false;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (!playerInInventory)
+        if (!playerInInventory || !playerInPickUp)
         {
 
             if (Input.GetKeyDown(KeyCode.LeftShift))

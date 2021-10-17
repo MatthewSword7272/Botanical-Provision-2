@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,15 +20,17 @@ public class ItemPickup : Interactable
     public bool secoundWater = false;
     public Animation anim;
     public GameObject Camera;
+    private CinemachineFreeLook _3rdCam;
+    private Color startcolor;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-      //  popup.enabled = false;
+        //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
-        Camera = GameObject.FindGameObjectWithTag("3rdPersonCam");
+        _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
     }
 
     public override void Interact()
@@ -42,8 +45,8 @@ public class ItemPickup : Interactable
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
-            player.playerInInventory = true;
-            Camera.SetActive(false);
+            player.playerInPickUp = true;
+            _3rdCam.gameObject.SetActive(false);
 
         }
 
@@ -51,15 +54,16 @@ public class ItemPickup : Interactable
         {
             Debug.Log("else if ");
             base.Interact();
-            Water(); 
+            Water();
         }
-       
+
     }
-    void Water() {
-        bool enough=false;
+    void Water()
+    {
+        bool enough = false;
         if (water.GetComponent<Slider>().value >= 20) enough = true;
         Debug.Log("wat");
-        if (firstWater == false&& enough)
+        if (firstWater == false && enough)
         {
             Debug.Log("first water ");
 
@@ -77,7 +81,7 @@ public class ItemPickup : Interactable
 
         }
     }
-  
+
 
     public void SeedClicked()
     {
@@ -93,13 +97,30 @@ public class ItemPickup : Interactable
     public void CloseClicked()
     {
         popup.enabled = false;
-        if (inventory.activeSelf)
+
+        anim.GatherOff();
+        player.playerInPickUp = false;
+
+        if (!player.playerInInventory)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            anim.GatherOff();
-            player.playerInInventory = false;
-            Camera.SetActive(true);
+            _3rdCam.gameObject.SetActive(true);
+        }
+
+    }
+
+    void OnMouseEnter()
+    {
+        if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
+        {
+            startcolor = GetComponentInChildren<Renderer>().material.color;
+            GetComponentInChildren<Renderer>().material.color = Color.yellow;
         }
     }
+    void OnMouseExit()
+    {
+        GetComponentInChildren<Renderer>().material.color = startcolor;
+    }
+
 }

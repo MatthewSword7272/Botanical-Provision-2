@@ -30,10 +30,6 @@ public class Tutorial : MonoBehaviour
             me.GetComponent<Image>().sprite = screens[index];
         }
     }
-    public void startt() {  
-        p.Pause();
-        me.enabled = true;
-    }
 
 
 }

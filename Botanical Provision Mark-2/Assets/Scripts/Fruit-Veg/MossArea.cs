@@ -7,7 +7,7 @@ public class MossArea : MonoBehaviour
  
     private void OnTriggerEnter(Collider colliderPlayer)
     {
-        if (colliderPlayer.gameObject.tag == "Player")
+        if (colliderPlayer.gameObject.CompareTag("Player"))
         {
             colliderPlayer.GetComponent<Player>().playerInZone = true;
             
@@ -17,7 +17,7 @@ public class MossArea : MonoBehaviour
 
     private void OnTriggerExit(Collider colliderPlayer)
     {
-        if (colliderPlayer.gameObject.tag == "Player")
+        if (colliderPlayer.gameObject.CompareTag("Player"))
         {
             colliderPlayer.GetComponent<Player>().playerInZone = false;
 
