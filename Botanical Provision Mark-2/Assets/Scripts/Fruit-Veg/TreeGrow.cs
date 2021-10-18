@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TreeGrow : MonoBehaviour
 {
@@ -11,18 +12,19 @@ public class TreeGrow : MonoBehaviour
     public List<Material> _materials;
     public ItemPickup pick;
     int treeState = 1;
-
+    private GameObject WaterPlantObj;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        pick = GetComponentInChildren<ItemPickup>();     
-        transform.localScale = new Vector3(0, 0, 0);      
+        pick = GetComponentInChildren<ItemPickup>();
+        transform.localScale = new Vector3(0, 0, 0);
         minScale = transform.localScale;
         postion = transform.localPosition;
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];
         GetComponentInChildren<Renderer>().material = _materials[0];
+        WaterPlantObj = GameObject.Find("Water Growing Plant");
 
     }
 
@@ -39,11 +41,11 @@ public class TreeGrow : MonoBehaviour
             transform.localScale = new Vector3(2, 2, 2);
         }
         //if waiting to be watered
-        else if ((treeState==1&& transform.localScale.x>1)||(treeState==2 && transform.localScale.x>2)) {
+        else if ((treeState == 1 && transform.localScale.x > 1) || (treeState == 2 && transform.localScale.x > 2))
+        {
             Debug.Log("waiting to be watered");
-        
-        }
 
+        }
         //if ready to keep getting bigger
         else
         {
@@ -54,21 +56,21 @@ public class TreeGrow : MonoBehaviour
         }
 
 
-        if ((transform.localScale.x >= 1 && transform.localScale.x < 2 )&&pick.firstWater==true)
+        if ((transform.localScale.x >= 1 && transform.localScale.x < 2) && pick.firstWater == true)
         {
             treeState = 2;
-          //  Debug.Log("tree grow 3");
+            //  Debug.Log("tree grow 3");
 
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
         }
-        else if (transform.localScale.x >= 2 && pick.secoundWater==true)
+        else if (transform.localScale.x >= 2 && pick.secoundWater == true)
         {
             treeState = 3;
-            //Debug.Log("tree grow 4");
             GetComponentInChildren<MeshFilter>().mesh = _mesh[2];
             GetComponentInChildren<Renderer>().material = _materials[2];
+            WaterPlantObj.GetComponent<Toggle>().isOn = true;
         }
 
     }

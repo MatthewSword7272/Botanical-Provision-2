@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (!playerInInventory || !playerInPickUp)
+        if (!playerInInventory && !playerInPickUp)
         {
 
             if (Input.GetKeyDown(KeyCode.LeftShift))

@@ -25,6 +25,8 @@ public class ItemPickup : Interactable
     public int NumOfSeeds = 9;
     public int NumOfFruits = 9;
     private NoSeedFruit noSeedFruit;
+    private GameObject pickSeedObj;
+    private GameObject pickFruitObj;
 
     private void Start()
     {
@@ -35,6 +37,9 @@ public class ItemPickup : Interactable
         anim = FindObjectOfType<Animation>();
         _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
         noSeedFruit = FindObjectOfType<NoSeedFruit>();
+        pickSeedObj = GameObject.Find("Pick Seed From Plant");
+        pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
+        startcolor = GetComponentInChildren<Renderer>().material.color;
     }
 
     public override void Interact()
@@ -98,6 +103,7 @@ public class ItemPickup : Interactable
             FindObjectOfType<Inventory>().Add(items);
             Debug.Log("picking" + items.itemName);
             NumOfSeeds--;
+            pickSeedObj.GetComponent<Toggle>().isOn = true;
         }
     }
     public void FruitClicked()
@@ -111,6 +117,7 @@ public class ItemPickup : Interactable
             FindObjectOfType<Inventory>().Add(itemf);
             Debug.Log("picking" + itemf.itemName);
             NumOfFruits--;
+            pickFruitObj.GetComponent<Toggle>().isOn = true;
         }
     }
     public void CloseClicked()
@@ -134,8 +141,7 @@ public class ItemPickup : Interactable
         if (Vector2.Distance(transform.position, player.transform.position) < 3)
         {
             if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
-            {
-                startcolor = GetComponentInChildren<Renderer>().material.color;
+            {              
                 GetComponentInChildren<Renderer>().material.color = Color.yellow;
             }
         }

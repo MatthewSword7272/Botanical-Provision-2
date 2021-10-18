@@ -17,7 +17,7 @@ public class Animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.playerInInventory)
+        if (!player.playerInInventory && !player.playerInPickUp)
         {
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
@@ -26,7 +26,7 @@ public class Animation : MonoBehaviour
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
             }
-            if (!Input.anyKey && !anim.GetBool("Gathering"))
+            if (!Input.anyKey)
             {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);

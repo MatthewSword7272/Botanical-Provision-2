@@ -110,7 +110,7 @@ public class InventorySlot : MonoBehaviour
             item.Use();
 
 
-            int amount = Int32.Parse(_amountText.text);
+            int amount = int.Parse(_amountText.text);
             Debug.Log("use " + item.itemName);
 
             if (playerMovement.playerInZone || !item.itemName.Contains("Seed"))

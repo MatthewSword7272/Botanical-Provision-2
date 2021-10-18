@@ -19,7 +19,7 @@ public class NoSeedFruit : MonoBehaviour
     {
         text.GetComponent<Text>().color = Color.white;
         text.GetComponent<Text>().text = message;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3);
         text.GetComponent<Text>().text = "";
 
     }

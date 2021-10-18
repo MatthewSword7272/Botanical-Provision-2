@@ -9,8 +9,13 @@ public class Seed : Item
     private GameObject player;
     public GameObject TreePrefab;
     private Player playerMovement;
-    private GameObject text;
     private NoSeedFruit noSeedFruit;
+    private GameObject plantSeedObj;
+
+    private void Awake()
+    {
+        plantSeedObj = GameObject.Find("Plant Seed in Garden");
+    }
 
     public override void Use()
     {
@@ -22,6 +27,7 @@ public class Seed : Item
         if (playerMovement.playerInZone)
         {
             Instantiate(TreePrefab, new Vector3(player.transform.position.x, 15, player.transform.position.z + 1), Quaternion.identity);
+            plantSeedObj.GetComponent<Toggle>().isOn = true;
         }
         else 
         {

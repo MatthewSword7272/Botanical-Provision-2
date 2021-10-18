@@ -8,11 +8,12 @@ public class fillWaterCan : Interactable
     private PlayerVitals playerVitals;
     public Slider waterSlider;
     public Animation anim;
+    private GameObject WaterPickObj;
 
 
     void Start() {
         anim = FindObjectOfType<Animation>();
-
+        WaterPickObj = GameObject.Find("Pick Up Water");
     }
 
     public override void Interact()
@@ -21,10 +22,7 @@ public class fillWaterCan : Interactable
 
         playerVitals = FindObjectOfType<PlayerVitals>();
         waterSlider.value += 100;
-        //anim.Water()
-
-
-        Debug.Log("water");
+        WaterPickObj.GetComponent<Toggle>().isOn = true;
     }
 
 
