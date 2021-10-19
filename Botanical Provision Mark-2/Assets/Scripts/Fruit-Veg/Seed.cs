@@ -12,14 +12,9 @@ public class Seed : Item
     private NoSeedFruit noSeedFruit;
     public GameObject plantSeedObj;
 
-    private void Awake()
-    {
-            
-    }
-
     public override void Use()
     {
-        plantSeedObj = GameObject.Find("Plant Seed in Garden");
+        plantSeedObj = GameObject.Find("Plant Seed in Garden");   
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = FindObjectOfType<Player>();
         noSeedFruit = FindObjectOfType<NoSeedFruit>();
