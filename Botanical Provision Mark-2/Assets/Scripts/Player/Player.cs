@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public Interactable focus;
-    public float speed = 6f;
+    public float speed;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 velocity;
