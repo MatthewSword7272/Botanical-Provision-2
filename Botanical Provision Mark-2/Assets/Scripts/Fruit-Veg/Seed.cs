@@ -10,7 +10,7 @@ public class Seed : Item
     public GameObject TreePrefab;
     private Player playerMovement;
     private NoSeedFruit noSeedFruit;
-    private GameObject plantSeedObj;
+    public GameObject plantSeedObj;
 
     private void Awake()
     {
