@@ -14,16 +14,14 @@ public class Seed : Item
 
     private void Awake()
     {
-        plantSeedObj = GameObject.Find("Plant Seed in Garden");
+        plantSeedObj = GameObject.Find("Plant Seed in Garden"); 
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = FindObjectOfType<Player>();
+        noSeedFruit = FindObjectOfType<NoSeedFruit>();
     }
 
     public override void Use()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = FindObjectOfType<Player>();
-        noSeedFruit = FindObjectOfType<NoSeedFruit>();
-
-
         if (playerMovement.playerInZone)
         {
             Instantiate(TreePrefab, new Vector3(player.transform.position.x, 15, player.transform.position.z + 1), Quaternion.identity);
