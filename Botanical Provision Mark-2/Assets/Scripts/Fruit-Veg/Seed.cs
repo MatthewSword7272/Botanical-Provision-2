@@ -9,7 +9,7 @@ public class Seed : Item
     private GameObject player;
     public GameObject TreePrefab;
     private Player playerMovement;
-    private NoSeedFruit noSeedFruit;
+    private NoMore noSeedFruit;
     public GameObject plantSeedObj;
 
     public override void Use()
@@ -17,7 +17,7 @@ public class Seed : Item
         plantSeedObj = GameObject.Find("Plant Seed in Garden");   
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = FindObjectOfType<Player>();
-        noSeedFruit = FindObjectOfType<NoSeedFruit>();
+        noSeedFruit = FindObjectOfType<NoMore>();
 
         if (playerMovement.playerInZone)
         {

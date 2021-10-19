@@ -24,7 +24,7 @@ public class ItemPickup : Interactable
     private Color startcolor;
     public int NumOfSeeds = 9;
     public int NumOfFruits = 9;
-    private NoSeedFruit noSeedFruit;
+    private NoMore noSeedFruit;
     private GameObject pickSeedObj;
     private GameObject pickFruitObj;
 
@@ -36,7 +36,7 @@ public class ItemPickup : Interactable
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
-        noSeedFruit = FindObjectOfType<NoSeedFruit>();
+        noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
         startcolor = GetComponentInChildren<Renderer>().material.color;
