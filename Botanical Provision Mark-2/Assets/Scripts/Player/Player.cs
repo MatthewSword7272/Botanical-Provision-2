@@ -20,11 +20,17 @@ public class Player : MonoBehaviour
     public bool playerInZone = false;
     public bool playerInInventory = false;
     public bool playerInPickUp = false;
+    bool isMoving = false;
+    AudioSource audioSource;
+    public AudioClip walking;
+    public AudioClip running;
+    
 
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,10 +49,12 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 speed = 15f;
+                audioSource.clip = running;
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = 6f;
+                audioSource.clip = walking;
             }
 
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -65,6 +73,28 @@ public class Player : MonoBehaviour
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
+
+            if (horizontal < 0 || vertical != 0)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+           
+            if (isMoving)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+           
         }
 
 
