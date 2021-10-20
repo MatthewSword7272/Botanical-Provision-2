@@ -20,11 +20,15 @@ public class Player : MonoBehaviour
     public bool playerInZone = false;
     public bool playerInInventory = false;
     public bool playerInPickUp = false;
+    bool isMoving = false;
+    AudioSource audioSource;
+    
 
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,6 +69,28 @@ public class Player : MonoBehaviour
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
+
+            if (controller.velocity.x != 0 || controller.velocity.z != 0)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+           
+            if (isMoving)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+           
         }
 
 
