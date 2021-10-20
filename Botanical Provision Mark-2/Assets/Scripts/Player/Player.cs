@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             {
                 isMoving = false;
             }
-           
+
             if (isMoving)
             {
                 if (!audioSource.isPlaying)
@@ -94,7 +94,11 @@ public class Player : MonoBehaviour
             {
                 audioSource.Stop();
             }
-           
+
+        }
+        else
+        {
+            audioSource.Stop();
         }
 
 

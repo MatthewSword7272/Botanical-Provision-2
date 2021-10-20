@@ -54,6 +54,7 @@ public class Animation : MonoBehaviour
     public void GatherOn()
     {
         anim.SetBool("Gathering", true);
+        anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", false);
     }
@@ -61,6 +62,7 @@ public class Animation : MonoBehaviour
     public void GatherOff()
     {
         anim.SetBool("Gathering", false);
+        anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", true);
     }
