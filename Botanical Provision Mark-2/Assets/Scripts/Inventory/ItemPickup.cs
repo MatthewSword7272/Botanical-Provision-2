@@ -19,7 +19,7 @@ public class ItemPickup : Interactable
     public bool firstWater = false;
     public bool secoundWater = false;
     public Animation anim;
-    public GameObject Camera;
+    public GameObject _Camera;
     private CinemachineFreeLook _3rdCam;
     private Color startcolor;
     public int NumOfSeeds = 9;
@@ -27,6 +27,7 @@ public class ItemPickup : Interactable
     private NoMore noSeedFruit;
     private GameObject pickSeedObj;
     private GameObject pickFruitObj;
+    public AudioClip pickUpSound;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class ItemPickup : Interactable
         //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
-        _3rdCam = Camera.GetComponent<CinemachineFreeLook>();
+        _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
         noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
@@ -104,6 +105,7 @@ public class ItemPickup : Interactable
             Debug.Log("picking" + items.itemName);
             NumOfSeeds--;
             pickSeedObj.GetComponent<Toggle>().isOn = true;
+            AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);
         }
     }
     public void FruitClicked()
@@ -118,6 +120,7 @@ public class ItemPickup : Interactable
             Debug.Log("picking" + itemf.itemName);
             NumOfFruits--;
             pickFruitObj.GetComponent<Toggle>().isOn = true;
+            AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);
         }
     }
     public void CloseClicked()
