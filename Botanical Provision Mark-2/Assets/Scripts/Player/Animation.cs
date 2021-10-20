@@ -67,6 +67,6 @@ public class Animation : MonoBehaviour
 
     public void Water()
     {
-        anim.SetBool("Water", true);
+        anim.Play("Watering");
     }
 }

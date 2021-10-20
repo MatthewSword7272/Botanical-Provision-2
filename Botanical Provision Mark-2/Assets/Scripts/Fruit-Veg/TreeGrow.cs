@@ -13,6 +13,7 @@ public class TreeGrow : MonoBehaviour
     public ItemPickup pick;
     int treeState = 1;
     private GameObject WaterPlantObj;
+    public AudioClip watering;
 
 
     // Start is called before the first frame update
@@ -60,7 +61,7 @@ public class TreeGrow : MonoBehaviour
         {
             treeState = 2;
             //  Debug.Log("tree grow 3");
-
+            AudioSource.PlayClipAtPoint(watering, gameObject.transform.position, 1f);
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
@@ -68,6 +69,7 @@ public class TreeGrow : MonoBehaviour
         else if (transform.localScale.x >= 2 && pick.secoundWater == true)
         {
             treeState = 3;
+            AudioSource.PlayClipAtPoint(watering, gameObject.transform.position, 1f);
             GetComponentInChildren<MeshFilter>().mesh = _mesh[2];
             GetComponentInChildren<Renderer>().material = _materials[2];
             WaterPlantObj.GetComponent<Toggle>().isOn = true;
