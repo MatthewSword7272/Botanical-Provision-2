@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
 
-            if (controller.velocity.x != 0 || controller.velocity.z != 0)
+            if (horizontal < 0 || vertical != 0)
             {
                 isMoving = true;
             }
