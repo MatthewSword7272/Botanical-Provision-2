@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public bool playerInPickUp = false;
     bool isMoving = false;
     AudioSource audioSource;
+    public AudioClip walking;
+    public AudioClip running;
     
 
     private void Start()
@@ -47,10 +49,12 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 speed = 15f;
+                audioSource.clip = running;
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = 6f;
+                audioSource.clip = walking;
             }
 
             float horizontal = Input.GetAxisRaw("Horizontal");
