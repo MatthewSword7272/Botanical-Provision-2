@@ -15,7 +15,6 @@ public class InventorySlot : MonoBehaviour
     private Player player;
     public AudioSource audioSource;
 
-
     private void Start()
     {
         inventory = Inventory.instance;
@@ -26,26 +25,12 @@ public class InventorySlot : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        // if (!item)
-        //{
         item = newItem;
         icon.sprite = newItem.icon;
         icon.enabled = true;
         removeButton.interactable = true;
-        //}
-        /*
-        else
-        {
-            if (item != newItem)
-            {
-                Debug.LogWarning($"Type mismatch between current item {item} and added item {newItem}!", this);
-                return;
-            }
-            
-        } 
-        */
+        
         _amountText.text = item.itemAmount.ToString();
-
     }
 
     public void RemoveItem(int amount = 1)
@@ -96,28 +81,17 @@ public class InventorySlot : MonoBehaviour
     }
     public void OnRemoveButton()
     {
-        int amount = int.Parse(_amountText.text);
-        Debug.Log("remove" + item.itemName);
-
-
         RemoveItem();
-
-
     }
+
     public void UseItem()
     {
         if (item)
         {
-
             item.Use();
-
-
-            int amount = int.Parse(_amountText.text);
-            Debug.Log("use " + item.itemName);
 
             if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
             {
-                Debug.Log("Playing");
                 audioSource.Play();
             }
 

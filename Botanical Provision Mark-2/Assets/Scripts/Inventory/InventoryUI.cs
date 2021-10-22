@@ -58,10 +58,8 @@ public class InventoryUI : MonoBehaviour
     {
         Debug.Log("update ui");
 
-
         foreach (Item i in inventory.items)
         {
-
             Debug.Log(i.itemName);
         }
 
@@ -69,16 +67,11 @@ public class InventoryUI : MonoBehaviour
         {
             if (i < inventory.items.Count)
             {
-                Debug.Log("add" + i);
                 slots[i].AddItem(inventory.items[i]);
-
-
             }
             else
             {
-                Debug.Log("clear" + i);
                 slots[i].ClearSlot();
-
             }
         }
     }

@@ -9,42 +9,34 @@ public class Fruit : Item
 
     public override void Use()
     {
-
-        Debug.Log("override" + itemName);
         AddHealth(itemName);
-
     }
 
     public void AddHealth(string fruit)
     {
         playerVitals = FindObjectOfType<PlayerVitals>();
 
-        if (fruit == "Berry")
+        if (fruit == "Berry Fruit")
         {
             playerVitals.healthSlider.value += 10;
             playerVitals.hungerSlider.value += 10;
         }
-        else if (fruit == "Banana")
-        {
-            playerVitals.healthSlider.value += 30;
-            playerVitals.hungerSlider.value += 30;
-        }
-        else if (fruit == "Apple")
+        else if (fruit == "Apple Fruit")
         {
             playerVitals.healthSlider.value += 15;
             playerVitals.hungerSlider.value += 15;
         }
-        else if (fruit == "Carrot")
+        else if (fruit == "Carrot Veg")
         {
             playerVitals.healthSlider.value += 20;
             playerVitals.hungerSlider.value += 20;
         }
-        else if (fruit == "Lettuce")
+        else if (fruit == "Lettuce Veg")
         {
             playerVitals.healthSlider.value += 25;
             playerVitals.hungerSlider.value += 25;
         }
-        else if (fruit == "Corn")
+        else if (fruit == "Corn Veg")
         {
             playerVitals.healthSlider.value += 17;
             playerVitals.hungerSlider.value += 17;

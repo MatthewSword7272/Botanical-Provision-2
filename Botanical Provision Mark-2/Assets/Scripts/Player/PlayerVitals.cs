@@ -15,11 +15,6 @@ public class PlayerVitals : MonoBehaviour
     private readonly int hungerFallRate = 3;
     public static string PreviousSence;
 
-
-    //   public int maxWater;
-    //  private readonly int hungerFallRate = 3;
-
-
     private void Start()
     {
         healthSlider.maxValue = maxHealth;
@@ -27,7 +22,6 @@ public class PlayerVitals : MonoBehaviour
 
         hungerSlider.maxValue = maxHunger;
         hungerSlider.value = maxHunger;
-
 
     }
 

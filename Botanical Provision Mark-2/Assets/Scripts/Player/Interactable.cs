@@ -41,9 +41,7 @@ public class Interactable : MonoBehaviour
     }
     void Start()
     {
-
         popup = GameObject.FindGameObjectWithTag("popup").GetComponent<Canvas>();
         popup.enabled = false;
-
     }
 }

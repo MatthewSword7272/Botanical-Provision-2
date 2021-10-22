@@ -9,9 +9,7 @@ public class fillWaterCan : Interactable
     public Slider waterSlider;
     public Animation anim;
     private GameObject WaterPickObj;
-    public AudioClip fillWaterSound;
     private AudioSource audioSource;
-
 
     void Start() {
         anim = FindObjectOfType<Animation>();
@@ -28,10 +26,5 @@ public class fillWaterCan : Interactable
         WaterPickObj.GetComponent<Toggle>().isOn = true;
         audioSource.Play();
     }
-
-
-   
-
-
 
 }

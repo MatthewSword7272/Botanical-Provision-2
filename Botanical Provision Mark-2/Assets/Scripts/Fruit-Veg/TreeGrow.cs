@@ -13,7 +13,7 @@ public class TreeGrow : MonoBehaviour
     public ItemPickup pick;
     int treeState = 1;
     private GameObject WaterPlantObj;
-
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class TreeGrow : MonoBehaviour
         GetComponentInChildren<MeshFilter>().mesh = _mesh[0];
         GetComponentInChildren<Renderer>().material = _materials[0];
         WaterPlantObj = GameObject.Find("Water Growing Plant");
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -37,12 +38,13 @@ public class TreeGrow : MonoBehaviour
         if (transform.localScale.x >= 2 && treeState == 3)
         {
             pick.grown = true;
-
+            audioSource.Stop();
             transform.localScale = new Vector3(2, 2, 2);
         }
         //if waiting to be watered
         else if ((treeState == 1 && transform.localScale.x > 1) || (treeState == 2 && transform.localScale.x > 2))
         {
+            audioSource.Stop();
             Debug.Log("waiting to be watered");
 
         }
@@ -51,6 +53,12 @@ public class TreeGrow : MonoBehaviour
         {
             //Debug.Log("tree grow 2");
 
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+                Debug.Log("Playing");
+            }
+            
             float rate = Time.deltaTime / speed;
             transform.localScale += new Vector3(rate, rate, rate);
         }
@@ -72,6 +80,12 @@ public class TreeGrow : MonoBehaviour
             GetComponentInChildren<MeshFilter>().mesh = _mesh[2];
             GetComponentInChildren<Renderer>().material = _materials[2];
             WaterPlantObj.GetComponent<Toggle>().isOn = true;
+        }
+
+        if (PauseMenu.GameIsPaused && audioSource.isPlaying)
+        {            
+            audioSource.Stop();
+            
         }
 
     }

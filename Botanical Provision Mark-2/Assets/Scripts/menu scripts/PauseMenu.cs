@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     //use these for the button overlap
     private Interactable interactable;
     private bool pickupSwitch = false;
+
     private AudioSource gameMusic;
     public GameObject Reticle;
 
