@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Reticle.SetActive(true);
-        gameMusic.Play();
+        gameMusic.UnPause();
 
     }
 

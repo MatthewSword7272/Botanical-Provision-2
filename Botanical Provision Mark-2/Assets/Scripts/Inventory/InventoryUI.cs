@@ -37,7 +37,7 @@ public class InventoryUI : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                _3rdCam.gameObject.SetActive(false);
+                _3rdCam.enabled = false;
                 player.playerInInventory = true;
             }
             else
@@ -48,7 +48,7 @@ public class InventoryUI : MonoBehaviour
                 {
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
-                    _3rdCam.gameObject.SetActive(true);
+                    _3rdCam.enabled = true;
                 }
             }
         }  

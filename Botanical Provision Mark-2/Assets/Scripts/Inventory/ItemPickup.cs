@@ -20,7 +20,7 @@ public class ItemPickup : Interactable
     public bool secoundWater = false;
     public Animation anim;
     public GameObject _Camera;
-    private CinemachineFreeLook _3rdCam;
+    public CinemachineFreeLook _3rdCam;
     private Color startcolor;
     public int NumOfSeeds = 9;
     public int NumOfFruits = 9;
@@ -28,6 +28,8 @@ public class ItemPickup : Interactable
     private GameObject pickSeedObj;
     private GameObject pickFruitObj;
     public AudioClip pickUpSound;
+    public AudioClip wateringSound;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -42,6 +44,7 @@ public class ItemPickup : Interactable
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
         startcolor = GetComponentInChildren<Renderer>().material.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Interact()
@@ -57,7 +60,7 @@ public class ItemPickup : Interactable
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
             player.playerInPickUp = true;
-            _3rdCam.gameObject.SetActive(false);
+            _3rdCam.enabled = false;
 
         }
 
@@ -77,7 +80,7 @@ public class ItemPickup : Interactable
         if (firstWater == false && enough)
         {
             Debug.Log("first water ");
-
+            audioSource.PlayOneShot(wateringSound, 1f);
             firstWater = true;
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
 
@@ -85,7 +88,7 @@ public class ItemPickup : Interactable
         else if (secoundWater == false && enough)
         {
             Debug.Log("first water ");
-
+            audioSource.PlayOneShot(wateringSound, 1f);
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
 
             secoundWater = true;
@@ -135,7 +138,7 @@ public class ItemPickup : Interactable
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            _3rdCam.gameObject.SetActive(true);
+            _3rdCam.enabled = true;
         }
 
     }

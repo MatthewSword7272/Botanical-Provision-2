@@ -12,13 +12,15 @@ public class InventorySlot : MonoBehaviour
     public Button removeButton;
     public Text _amountText;
     Inventory inventory;
-    private Player playerMovement;
+    private Player player;
+    public AudioSource audioSource;
 
 
     private void Start()
     {
         inventory = Inventory.instance;
-        playerMovement = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>();
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -113,11 +115,16 @@ public class InventorySlot : MonoBehaviour
             int amount = int.Parse(_amountText.text);
             Debug.Log("use " + item.itemName);
 
-            if (playerMovement.playerInZone || !item.itemName.Contains("Seed"))
+            if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
+            {
+                Debug.Log("Playing");
+                audioSource.Play();
+            }
+
+            if (player.playerInZone || !item.itemName.Contains("Seed"))
             {
                 RemoveItem();
             }
-
 
         }
     }

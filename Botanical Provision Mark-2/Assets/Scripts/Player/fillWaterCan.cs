@@ -9,11 +9,14 @@ public class fillWaterCan : Interactable
     public Slider waterSlider;
     public Animation anim;
     private GameObject WaterPickObj;
+    public AudioClip fillWaterSound;
+    private AudioSource audioSource;
 
 
     void Start() {
         anim = FindObjectOfType<Animation>();
         WaterPickObj = GameObject.Find("Pick Up Water");
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Interact()
@@ -23,6 +26,7 @@ public class fillWaterCan : Interactable
         playerVitals = FindObjectOfType<PlayerVitals>();
         waterSlider.value += 100;
         WaterPickObj.GetComponent<Toggle>().isOn = true;
+        audioSource.Play();
     }
 
 

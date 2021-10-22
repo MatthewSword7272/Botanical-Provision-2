@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     private Transform player;
     public float radius = 3f;
     public Canvas popup;
+
     public virtual void Interact()
     {
         hasInteracted = true;
@@ -17,7 +18,6 @@ public class Interactable : MonoBehaviour
 
     public void OnFocus(Transform playerTransform)
     {
-
         isFocus = true;
         hasInteracted = false;
         player = playerTransform;
