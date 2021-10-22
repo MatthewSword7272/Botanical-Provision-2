@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     private Interactable interactable;
     private bool pickupSwitch = false;
     private AudioSource gameMusic;
+    public GameObject Reticle;
 
     // Update is called once per frame
     private void Start()
@@ -23,7 +24,7 @@ public class PauseMenu : MonoBehaviour
         HowtoPlayUI.SetActive(false);
         interactable = FindObjectOfType<Interactable>();
         gameMusic = GameObject.Find("Audio Source").GetComponent<AudioSource>();
-
+        Reticle = GameObject.Find("Reticle");
     }
 
     private void Update()
@@ -49,9 +50,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
-
-        gameMusic.Play();
+        Reticle.SetActive(true);
+        gameMusic.UnPause();
 
     }
 
@@ -62,10 +62,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        
-
+        Reticle.SetActive(false);
         gameMusic.Pause();
-
     }
 
     public void LoadMenu()
