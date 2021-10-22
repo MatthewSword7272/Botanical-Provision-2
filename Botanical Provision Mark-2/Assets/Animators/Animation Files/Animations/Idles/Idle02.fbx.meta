@@ -425,7 +425,7 @@ ModelImporter:
     second: Idle02 - Idle01
   - first:
       74: 7400004
-    second: BasicMotions@Idle02
+    second: Idle02
   - first:
       95: 9500000
     second: //RootNode
@@ -458,7 +458,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: BasicMotions@Idle02
+      name: Idle02
       takeName: BasicMotions@Idle02
       internalID: 0
       firstFrame: 0
