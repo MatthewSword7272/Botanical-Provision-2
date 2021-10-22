@@ -36,6 +36,7 @@ public class ItemPickup : Interactable
         //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
+        _Camera = GameObject.Find("3rd Person Camera");
         _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
         noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
