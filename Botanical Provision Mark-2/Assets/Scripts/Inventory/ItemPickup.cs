@@ -18,6 +18,7 @@ public class ItemPickup : Interactable
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
+    public bool isopen = false;
     public Animation anim;
     public GameObject _Camera;
     public CinemachineFreeLook _3rdCam;
@@ -31,11 +32,26 @@ public class ItemPickup : Interactable
     public AudioClip wateringSound;
     private AudioSource audioSource;
 
+
+    private void Update() {
+        if (PauseMenu.GameIsPaused) {
+            popup.enabled = false;
+
+        }
+        if (isopen && !PauseMenu.GameIsPaused) {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            popup.enabled = true;
+        }
+
+
+
+    }
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-        //  popup.enabled = false;
         water = GameObject.Find("WaterSlider");
         anim = FindObjectOfType<Animation>();
         _Camera = GameObject.Find("3rd Person Camera");
@@ -45,8 +61,8 @@ public class ItemPickup : Interactable
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
         startcolor = GetComponentInChildren<Renderer>().material.color;
         audioSource = GetComponent<AudioSource>();
-    }
-
+      
+    }  
     public override void Interact()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown)
@@ -55,7 +71,7 @@ public class ItemPickup : Interactable
             base.Interact();
             popup.enabled = true;
             secoundWater = true;
-
+            isopen = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             anim.GatherOn();
@@ -130,7 +146,7 @@ public class ItemPickup : Interactable
     public void CloseClicked()
     {
         popup.enabled = false;
-
+        isopen = false;
         anim.GatherOff();
         player.playerInPickUp = false;
 

@@ -30,6 +30,19 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.GameIsPaused)
+        {
+            inventoryUI.SetActive(false);
+
+        }
+        if (player.playerInInventory && !PauseMenu.GameIsPaused)
+        {
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            inventoryUI.SetActive(true);
+        }
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);

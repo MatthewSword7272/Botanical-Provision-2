@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     public static bool GameIsPaused = false;
     public static bool HowToPlayBool = false;
+    public bool itemMenuOpen=false;
     public GameObject pauseMenuUI;
     public GameObject HowtoPlayUI;
 
