@@ -14,6 +14,7 @@ public class InventorySlot : MonoBehaviour
     Inventory inventory;
     private Player player;
     public AudioSource audioSource;
+    public AudioClip plantingSound;
     private new Animation animation;
 
     private void Start()
@@ -98,8 +99,10 @@ public class InventorySlot : MonoBehaviour
             }
 
             if (player.playerInZone || !item.itemName.Contains("Seed"))
-            {
+            {         
                 RemoveItem();
+                animation.Plant();
+                audioSource.PlayOneShot(plantingSound, 1f);
             }
 
         }

@@ -26,7 +26,7 @@ public class Animation : MonoBehaviour
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
             }
-            if (!Input.anyKey && !anim.GetCurrentAnimatorStateInfo(0).IsName("Water"))
+            if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Water") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting")))
             {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);
@@ -77,5 +77,11 @@ public class Animation : MonoBehaviour
     {
         anim.SetBool("Idle", false);
         anim.Play("Eat");
+    }
+
+    public void Plant()
+    {
+        anim.SetBool("Idle", false);
+        anim.Play("Planting");
     }
 }
