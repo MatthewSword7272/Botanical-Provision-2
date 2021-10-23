@@ -99,15 +99,15 @@ public class ItemPickup : Interactable
             audioSource.PlayOneShot(wateringSound, 1f);
             firstWater = true;
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
-
+            anim.Water();
         }
         else if (secoundWater == false && enough)
         {
             Debug.Log("first water ");
-            audioSource.PlayOneShot(wateringSound, 1f);
+            audioSource.PlayOneShot(wateringSound, 1f);           
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
-
             secoundWater = true;
+            anim.Water();
 
         }
     }

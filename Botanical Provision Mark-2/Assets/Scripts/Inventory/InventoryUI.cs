@@ -37,7 +37,6 @@ public class InventoryUI : MonoBehaviour
         }
         if (player.playerInInventory && !PauseMenu.GameIsPaused)
         {
-
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 

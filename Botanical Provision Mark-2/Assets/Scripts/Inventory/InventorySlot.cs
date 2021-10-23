@@ -14,13 +14,14 @@ public class InventorySlot : MonoBehaviour
     Inventory inventory;
     private Player player;
     public AudioSource audioSource;
+    private new Animation animation;
 
     private void Start()
     {
         inventory = Inventory.instance;
         player = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
-
+        animation = FindObjectOfType<Animation>();
     }
 
     public void AddItem(Item newItem)
@@ -93,6 +94,7 @@ public class InventorySlot : MonoBehaviour
             if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
             {
                 audioSource.Play();
+                animation.Eat();
             }
 
             if (player.playerInZone || !item.itemName.Contains("Seed"))

@@ -26,7 +26,7 @@ public class Animation : MonoBehaviour
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
             }
-            if (!Input.anyKey)
+            if (!Input.anyKey && !anim.GetCurrentAnimatorStateInfo(0).IsName("Water"))
             {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);
@@ -52,8 +52,7 @@ public class Animation : MonoBehaviour
     }
 
     public void GatherOn()
-    {
-        anim.SetFloat("Gathering", 0);
+    { 
         anim.SetBool("Gathering", true);
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
@@ -70,11 +69,13 @@ public class Animation : MonoBehaviour
 
     public void Water()
     {
+        anim.SetBool("Idle", false);
         anim.Play("Water");
     }
 
     public void Eat()
     {
+        anim.SetBool("Idle", false);
         anim.Play("Eat");
     }
 }
