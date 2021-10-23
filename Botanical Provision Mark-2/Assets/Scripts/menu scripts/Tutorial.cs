@@ -6,15 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
-    public PauseMenu p;
+    public GameObject p,m;
+    public  PauseMenu pause;
     public bool fromGame;
     public Canvas me;
-    public Button Close, Left, Right;
+    public Button Close;
+    public Button Left;
+    public Button Right;
     public Sprite[] screens = new Sprite[5];
     int index=0;
+  
     public void closebutton() {
-        if (fromGame){ me.enabled = false; }
+        if (fromGame){
+           // pause.Pause();
+            p.SetActive(true);
+            m.SetActive(false);  
+            Debug.Log("clsoe tutoortial"); }
         else SceneManager.LoadScene("Title Screen");
+        Debug.Log("clsoe tutoortial");
 
     }
     public void LeftButton() {
