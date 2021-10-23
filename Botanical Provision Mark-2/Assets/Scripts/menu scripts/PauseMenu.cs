@@ -76,11 +76,16 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-            pauseMenuUI.SetActive(false);
+        if (HowToPlayBool)
+        {
+            HowtoPlayUI.SetActive(false);
+            HowToPlayBool = false;
+        }
+        else
+        {
             HowtoPlayUI.SetActive(true);
             HowToPlayBool = true;
-        
-
+        }
     }
 
     public void QuitGame()

@@ -53,6 +53,7 @@ public class Animation : MonoBehaviour
 
     public void GatherOn()
     {
+        anim.SetFloat("Gathering", 0);
         anim.SetBool("Gathering", true);
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
@@ -69,6 +70,11 @@ public class Animation : MonoBehaviour
 
     public void Water()
     {
-        anim.Play("Watering");
+        anim.Play("Water");
+    }
+
+    public void Eat()
+    {
+        anim.Play("Eat");
     }
 }
