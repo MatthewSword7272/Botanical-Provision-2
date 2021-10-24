@@ -9,7 +9,7 @@ public class GameOverMenu : MonoBehaviour
 {
     public void Restart()
     {
-        SceneManager.LoadScene("Normal Version");
+        ///
     }
 
     public void LoadMenu()
