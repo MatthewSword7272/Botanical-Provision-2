@@ -68,13 +68,6 @@ public class InventoryUI : MonoBehaviour
     }
     public void UpdateUI()
     {
-        Debug.Log("update ui");
-
-        foreach (Item i in inventory.items)
-        {
-            Debug.Log(i.itemName);
-        }
-
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.items.Count)

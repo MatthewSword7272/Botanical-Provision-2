@@ -17,13 +17,13 @@ public class Tutorial : MonoBehaviour
     int index=0;
   
     public void closebutton() {
-        if (fromGame){
-           // pause.Pause();
+        if (fromGame)
+        {
             p.SetActive(true);
             m.SetActive(false);  
-            Debug.Log("clsoe tutoortial"); }
-        else SceneManager.LoadScene("Title Screen");
-        Debug.Log("clsoe tutoortial");
+        }
+        else 
+            SceneManager.LoadScene("Title Screen");
 
     }
     public void LeftButton() {

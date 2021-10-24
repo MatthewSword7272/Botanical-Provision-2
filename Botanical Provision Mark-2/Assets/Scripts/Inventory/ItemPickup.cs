@@ -97,7 +97,6 @@ public class ItemPickup : Interactable
     IEnumerator coroutineA()
     {
         // wait for 1 second
-        Debug.Log("coroutineA created");
         yield return new WaitForSeconds(60.0f);
         tree1.SetActive(false);
         tree.SetActive(true);
@@ -109,7 +108,6 @@ public class ItemPickup : Interactable
     {
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled)
         {
-            Debug.Log("ripe");
             base.Interact();
             popup.enabled = true;
             secoundWater = true;
@@ -124,7 +122,6 @@ public class ItemPickup : Interactable
 
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && !grown)
         {
-            Debug.Log("else if ");
             base.Interact();
             Water();
         }
@@ -134,23 +131,20 @@ public class ItemPickup : Interactable
     {
         bool enough = false;
         if (water.GetComponent<Slider>().value >= 20) enough = true;
-        Debug.Log("wat");
-        if (firstWater == false && enough)
-        {
-            Debug.Log("first water ");
-            audioSource.PlayOneShot(wateringSound, 1f);
-            firstWater = true;
-            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
-            anim.Water();
-        }
-        else if (secoundWater == false && enough)
-        {
-            Debug.Log("first water ");
-            audioSource.PlayOneShot(wateringSound, 1f);
-            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
-            secoundWater = true;
-            anim.Water();
 
+        if (enough)
+        {
+            if (firstWater == false)
+            {
+                firstWater = true;               
+            }
+            else if (secoundWater == false)
+            {          
+                secoundWater = true;
+            }
+            audioSource.PlayOneShot(wateringSound, 1f);
+            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
+            anim.Water();
         }
     }
 
@@ -164,7 +158,6 @@ public class ItemPickup : Interactable
         else
         {
             FindObjectOfType<Inventory>().Add(items);
-            Debug.Log("picking" + items.itemName);
             currentNSeeds--;
             pickSeedObj.GetComponent<Toggle>().isOn = true;
             AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);
@@ -179,7 +172,6 @@ public class ItemPickup : Interactable
         else
         {
             FindObjectOfType<Inventory>().Add(itemf);
-            Debug.Log("picking" + itemf.itemName);
             currentNSeeds--;
             pickFruitObj.GetComponent<Toggle>().isOn = true;
             AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);

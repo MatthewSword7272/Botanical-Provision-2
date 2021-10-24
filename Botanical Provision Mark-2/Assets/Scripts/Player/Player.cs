@@ -101,21 +101,6 @@ public class Player : MonoBehaviour
             audioSource.Stop();
         }
 
-        //leftclick
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    if (Physics.Raycast(ray, out RaycastHit hit, 100))
-        //    {
-
-        //        Interactable interactable = hit.collider.GetComponent<Interactable>();
-        //        if (interactable != null)
-        //        {
-        //            Debug.Log("left click");
-        //        }
-        //    }
-        //}
-        //press Left-Mouse Button to get Fruit
         if (Input.GetMouseButton(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

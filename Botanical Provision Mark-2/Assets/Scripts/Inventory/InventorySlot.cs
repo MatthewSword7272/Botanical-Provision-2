@@ -40,8 +40,6 @@ public class InventorySlot : MonoBehaviour
         // check if enough
         if (!item)
         {
-            Debug.LogWarning("This slot is empty! Can't remove", this);
-            // TODO handle this?
             return;
         }
 
@@ -60,20 +58,10 @@ public class InventorySlot : MonoBehaviour
         }
         // update the text
         _amountText.text = item.itemAmount.ToString();
-
-
-        // Only if you reached 0 -> removed the last item 
-        // reset this slot
-        if (amount <= 0)
-        {
-
-
-        }
     }
 
     public void ClearSlot()
     {
-        Debug.Log("Clearing slot");
         item = null;
         icon.sprite = null;
         icon.enabled = false;

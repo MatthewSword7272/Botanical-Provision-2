@@ -39,7 +39,6 @@ public class TreeGrow : MonoBehaviour
         //if  grown
         if (transform.localScale.x >= 2 && treeState == 3)
         {
-
             pick.grown = true;
             audioSource.Stop();
             transform.localScale = new Vector3(2, 2, 2);
@@ -48,18 +47,13 @@ public class TreeGrow : MonoBehaviour
         else if ((treeState == 1 && transform.localScale.x > 1) || (treeState == 2 && transform.localScale.x > 2))
         {
             audioSource.Stop();
-            Debug.Log("waiting to be watered");
-
         }
         //if ready to keep getting bigger
         else
         {
-            //Debug.Log("tree grow 2");
-
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
-                Debug.Log("Playing");
             }
 
             float rate = Time.deltaTime / speed;
@@ -70,8 +64,6 @@ public class TreeGrow : MonoBehaviour
         if ((transform.localScale.x >= 1 && transform.localScale.x < 2) && pick.firstWater == true)
         {
             treeState = 2;
-            //  Debug.Log("tree grow 3");
-
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
