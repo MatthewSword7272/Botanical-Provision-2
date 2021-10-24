@@ -79,18 +79,21 @@ public class InventorySlot : MonoBehaviour
         if (item)
         {
             item.Use();
+            
 
             if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
             {
                 audioSource.Play();
                 animation.Eat();
-            }
-
-            if (player.playerInZone || !item.itemName.Contains("Seed"))
-            {         
                 RemoveItem();
+                return;
+            }
+            if (player.playerInZone || !item.itemName.Contains("Seed"))
+            {                
                 animation.Plant();
                 audioSource.PlayOneShot(plantingSound, 1f);
+                RemoveItem();
+                return;
             }
 
         }
