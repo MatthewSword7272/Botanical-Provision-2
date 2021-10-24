@@ -22,17 +22,15 @@ public class Animation : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("walk anim");
                 anim.SetBool("Idle", false);
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
             }
-            if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Water") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting")))
+            if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Water") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting 02")))
             {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);
                 anim.SetBool("Run", false);
-
             }
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && anim.GetBool("Walk"))
@@ -52,9 +50,17 @@ public class Animation : MonoBehaviour
       
     }
 
-    public void GatherOn()
-    { 
-        anim.SetBool("Gathering", true);
+    public void GatherOn(string treename)
+    {
+
+        if (treename.Contains("Apple") || treename.Contains("Corn"))
+        {
+            anim.SetBool("Gathering 01", true);
+        }
+        else
+        {
+            anim.SetBool("Gathering 02", true);
+        } 
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", false);
@@ -62,7 +68,8 @@ public class Animation : MonoBehaviour
 
     public void GatherOff()
     {
-        anim.SetBool("Gathering", false);
+        anim.SetBool("Gathering 01", false);
+        anim.SetBool("Gathering 02", false);
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", true);
@@ -83,6 +90,6 @@ public class Animation : MonoBehaviour
     public void Plant()
     {
         anim.SetBool("Idle", false);
-        anim.Play("Planting");
+        anim.Play("Planting 02");
     }
 }

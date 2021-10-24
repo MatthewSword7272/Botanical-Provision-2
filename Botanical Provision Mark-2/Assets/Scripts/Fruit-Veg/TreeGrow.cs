@@ -12,15 +12,14 @@ public class TreeGrow : MonoBehaviour
     public List<Material> _materials;
     public ItemPickup pick;
 
-    public bool doneGrowing=false;
+    public bool doneGrowing = false;
     int treeState = 1;
     private GameObject WaterPlantObj;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
-   public void Start()
+    public void Start()
     {
-        doneGrowing = false;
         pick = GetComponentInChildren<ItemPickup>();
         transform.localScale = new Vector3(0, 0, 0);
         minScale = transform.localScale;
@@ -40,7 +39,6 @@ public class TreeGrow : MonoBehaviour
         //if  grown
         if (transform.localScale.x >= 2 && treeState == 3)
         {
-
             pick.grown = true;
             audioSource.Stop();
             transform.localScale = new Vector3(2, 2, 2);
@@ -49,20 +47,15 @@ public class TreeGrow : MonoBehaviour
         else if ((treeState == 1 && transform.localScale.x > 1) || (treeState == 2 && transform.localScale.x > 2))
         {
             audioSource.Stop();
-            Debug.Log("waiting to be watered");
-
         }
         //if ready to keep getting bigger
         else
         {
-            //Debug.Log("tree grow 2");
-
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
-                Debug.Log("Playing");
             }
-            
+
             float rate = Time.deltaTime / speed;
             transform.localScale += new Vector3(rate, rate, rate);
         }
@@ -71,13 +64,11 @@ public class TreeGrow : MonoBehaviour
         if ((transform.localScale.x >= 1 && transform.localScale.x < 2) && pick.firstWater == true)
         {
             treeState = 2;
-            //  Debug.Log("tree grow 3");
-            
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];
             GetComponentInChildren<Renderer>().material = _materials[1];
 
         }
-        else if (transform.localScale.x >= 2 && pick.secoundWater == true&&!doneGrowing)
+        else if (transform.localScale.x >= 2 && pick.secoundWater == true && !doneGrowing)
         {
             treeState = 3;
             doneGrowing = true;
@@ -87,9 +78,9 @@ public class TreeGrow : MonoBehaviour
         }
 
         if (PauseMenu.GameIsPaused && audioSource.isPlaying)
-        {            
+        {
             audioSource.Stop();
-            
+
         }
 
     }
