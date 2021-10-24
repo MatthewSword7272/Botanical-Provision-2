@@ -143,7 +143,7 @@ public class ItemPickup : Interactable
                 secoundWater = true;
             }
             audioSource.PlayOneShot(wateringSound, 1f);
-            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
+            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
             anim.Water();
         }
     }
