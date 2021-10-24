@@ -55,11 +55,11 @@ public class Animation : MonoBehaviour
 
         if (treename.Contains("Apple") || treename.Contains("Corn"))
         {
-            anim.SetBool("Gathering 01", true);
+            anim.SetBool("Gathering Standing", true);
         }
         else
         {
-            anim.SetBool("Gathering 02", true);
+            anim.SetBool("Gathering Kneeling", true);
         } 
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
@@ -68,8 +68,8 @@ public class Animation : MonoBehaviour
 
     public void GatherOff()
     {
-        anim.SetBool("Gathering 01", false);
-        anim.SetBool("Gathering 02", false);
+        anim.SetBool("Gathering Standing", false);
+        anim.SetBool("Gathering Kneeling", false);
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", true);
