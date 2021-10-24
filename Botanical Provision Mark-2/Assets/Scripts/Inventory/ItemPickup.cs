@@ -80,7 +80,7 @@ public class ItemPickup : Interactable
                 pickupEnbabled = false;
                 tree.SetActive(false);
                 tree1.SetActive(true);
-                StartCoroutine(coroutineA());
+                StartCoroutine(CoroutineA());
 
             }
             else if (firstloop)
@@ -94,7 +94,7 @@ public class ItemPickup : Interactable
         }
 
     }
-    IEnumerator coroutineA()
+    IEnumerator CoroutineA()
     {
         // wait for 1 second
         yield return new WaitForSeconds(60.0f);
@@ -114,7 +114,7 @@ public class ItemPickup : Interactable
             isopen = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            anim.GatherOn();
+            anim.GatherOn(gameObject.name);
             player.playerInPickUp = true;
             _3rdCam.enabled = false;
 
