@@ -36,6 +36,28 @@ public class ItemPickup : Interactable
     public AudioClip wateringSound;
     private AudioSource audioSource;
 
+    private void Start()
+    {
+        popup = GetComponentInChildren<Canvas>();
+        player = FindObjectOfType<Player>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
+        water = GameObject.Find("WaterSlider");
+        anim = FindObjectOfType<Animation>();
+        _Camera = GameObject.Find("3rd Person Camera");
+        _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
+        noSeedFruit = FindObjectOfType<NoMore>();
+        pickSeedObj = GameObject.Find("Pick Seed From Plant");
+        pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
+        Renderer[] r;
+
+        r = GetComponentsInChildren<Renderer>();
+        foreach (Renderer re in r)
+        {
+            startcolor = re.material.color;
+        }
+        audioSource = GetComponent<AudioSource>();
+        currentNSeeds = NumOfSeeds;
+    }
 
     private void Update()
     {
@@ -82,30 +104,7 @@ public class ItemPickup : Interactable
         pickupEnbabled = true;
         currentNSeeds = NumOfSeeds;
     }
-    private void Start()
-    {
-        popup = GetComponentInChildren<Canvas>();
-        player = FindObjectOfType<Player>();
-        inventory = GameObject.FindGameObjectWithTag("Inventory");
-        water = GameObject.Find("WaterSlider");
-        anim = FindObjectOfType<Animation>();
-        _Camera = GameObject.Find("3rd Person Camera");
-        _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
-        noSeedFruit = FindObjectOfType<NoMore>();
-        pickSeedObj = GameObject.Find("Pick Seed From Plant");
-        pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
-        Renderer[] r;
-
-        r = GetComponentsInChildren<Renderer>();
-        foreach (Renderer re in r)
-        {
-            startcolor = re.material.color;
-        }
-        audioSource = GetComponent<AudioSource>();
-        currentNSeeds = NumOfSeeds;
-
-
-    }
+    
     public override void Interact()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled)
