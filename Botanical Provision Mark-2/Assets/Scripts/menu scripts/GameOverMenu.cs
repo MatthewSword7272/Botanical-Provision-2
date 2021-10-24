@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameOverMenu : MonoBehaviour
 {
 
-    void Start()
+    void Awake()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
