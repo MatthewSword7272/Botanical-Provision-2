@@ -22,6 +22,7 @@ public class Animation : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
             {
+                Debug.Log("walk anim");
                 anim.SetBool("Idle", false);
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);

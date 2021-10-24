@@ -8,12 +8,11 @@ public class PauseMenu : MonoBehaviour
 
     public static bool GameIsPaused = false;
     public static bool HowToPlayBool = false;
-    public bool itemMenuOpen=false;
     public GameObject pauseMenuUI;
     public GameObject HowtoPlayUI;
 
     //use these for the button overlap
-    private Interactable interactable;
+  //  private Interactable interactable;
     private bool pickupSwitch = false;
 
     private AudioSource gameMusic;
@@ -24,7 +23,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         HowtoPlayUI.SetActive(false);
-        interactable = FindObjectOfType<Interactable>();
+     //   interactable = FindObjectOfType<Interactable>();
         gameMusic = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         Reticle = GameObject.Find("Reticle");
     }

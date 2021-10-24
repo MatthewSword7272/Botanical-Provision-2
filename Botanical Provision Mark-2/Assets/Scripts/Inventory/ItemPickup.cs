@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class ItemPickup : Interactable
 {
     // Start is called before the first frame update
+    bool firstloop=true;
+    public bool pickupEnbabled=true;
+    public bool rootVeg=false;
     public Item itemf;
     public Item items;
     public Button Seed;
@@ -15,6 +18,7 @@ public class ItemPickup : Interactable
     private Player player;
     public GameObject water;
     private GameObject inventory;
+    public GameObject tree,tree1;
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
@@ -23,8 +27,8 @@ public class ItemPickup : Interactable
     public GameObject _Camera;
     public CinemachineFreeLook _3rdCam;
     private Color startcolor;
-    public int NumOfSeeds = 9;
-    public int NumOfFruits = 9;
+    public int NumOfSeeds = 5;
+    public int currentNSeeds;
     private NoMore noSeedFruit;
     private GameObject pickSeedObj;
     private GameObject pickFruitObj;
@@ -44,12 +48,38 @@ public class ItemPickup : Interactable
             popup.enabled = true;
         }
 
+        if (currentNSeeds == 0) {
+            if (!rootVeg)
+            {
+                pickupEnbabled = false;
+                tree.SetActive(false);
+                tree1.SetActive(true);
+                StartCoroutine(coroutineA());
 
+            }
+            else if(firstloop) {
+                firstloop = false;
+                tree.SetActive(false);
+                pickupEnbabled = false;
+                CloseClicked();
+            }
+
+        }
 
     }
-
+    IEnumerator coroutineA()
+    {
+        // wait for 1 second
+        Debug.Log("coroutineA created");
+        yield return new WaitForSeconds(60.0f);
+        tree1.SetActive(false);
+        tree.SetActive(true);
+        pickupEnbabled = true;
+        currentNSeeds = NumOfSeeds;
+    }
     private void Start()
     {
+        popup = GetComponentInChildren<Canvas>();
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         water = GameObject.Find("WaterSlider");
@@ -59,13 +89,20 @@ public class ItemPickup : Interactable
         noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
-        startcolor = GetComponentInChildren<Renderer>().material.color;
+        Renderer[] r;
+
+        r = GetComponentsInChildren<Renderer>();
+        foreach (Renderer re in r) {
+            startcolor = re.material.color;
+        }
         audioSource = GetComponent<AudioSource>();
-      
+        currentNSeeds = NumOfSeeds;
+        
+
     }  
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown&&pickupEnbabled)
         {
             Debug.Log("ripe");
             base.Interact();
@@ -115,7 +152,7 @@ public class ItemPickup : Interactable
 
     public void SeedClicked()
     {
-        if (NumOfSeeds == 0)
+        if (currentNSeeds == 0)
         {
             noSeedFruit.NoMoreStart("Plant does not have seeds");
         }
@@ -123,14 +160,14 @@ public class ItemPickup : Interactable
         {
             FindObjectOfType<Inventory>().Add(items);
             Debug.Log("picking" + items.itemName);
-            NumOfSeeds--;
+            currentNSeeds--;
             pickSeedObj.GetComponent<Toggle>().isOn = true;
             AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);
         }
     }
     public void FruitClicked()
     {
-        if (NumOfFruits == 0)
+        if (currentNSeeds == 0)
         {
            noSeedFruit.NoMoreStart("Plant does not have fruit");
         }
@@ -138,7 +175,7 @@ public class ItemPickup : Interactable
         {
             FindObjectOfType<Inventory>().Add(itemf);
             Debug.Log("picking" + itemf.itemName);
-            NumOfFruits--;
+            currentNSeeds--;
             pickFruitObj.GetComponent<Toggle>().isOn = true;
             AudioSource.PlayClipAtPoint(pickUpSound, gameObject.transform.position, 1f);
         }
@@ -161,17 +198,27 @@ public class ItemPickup : Interactable
 
     void OnMouseEnter()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3&&pickupEnbabled)
         {
             if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
-            {              
-                GetComponentInChildren<Renderer>().material.color = Color.yellow;
+            {
+
+                Renderer[] r =
+                GetComponentsInChildren<Renderer>();
+                foreach (Renderer re in r)
+                {
+                    re.material.color = Color.yellow; 
+                }
             }
         }
     }
     void OnMouseExit()
     {
-        GetComponentInChildren<Renderer>().material.color = startcolor;
+        Renderer[] r =
+        GetComponentsInChildren<Renderer>();
+        foreach (Renderer re in r) {
+            re.material.color = startcolor;
+        }
     }
 
 }
