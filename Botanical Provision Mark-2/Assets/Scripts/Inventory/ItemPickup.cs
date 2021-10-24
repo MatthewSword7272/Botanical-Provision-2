@@ -106,7 +106,7 @@ public class ItemPickup : Interactable
     
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled && Input.GetMouseButtonDown(1))
         {
             base.Interact();
             popup.enabled = true;
@@ -134,17 +134,20 @@ public class ItemPickup : Interactable
 
         if (enough)
         {
-            if (firstWater == false)
+            if (Input.GetMouseButtonDown(1))
             {
-                firstWater = true;               
+                if (firstWater == false)
+                {
+                    firstWater = true;
+                }
+                else if (secoundWater == false)
+                {
+                    secoundWater = true;
+                }
+
+                audioSource.PlayOneShot(wateringSound, 1f);
+                water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
             }
-            else if (secoundWater == false)
-            {          
-                secoundWater = true;
-            }
-            
-            audioSource.PlayOneShot(wateringSound, 1f);
-            water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
             anim.Water();
         }
     }

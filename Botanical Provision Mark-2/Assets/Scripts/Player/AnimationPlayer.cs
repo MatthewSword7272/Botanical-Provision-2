@@ -6,7 +6,7 @@ public class AnimationPlayer : MonoBehaviour
 {
     Animator anim;
     Player player;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class AnimationPlayer : MonoBehaviour
                 anim.SetBool("Run", false);
             }
             if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Watering") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting 02")))
-            {              
+            {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);
                 anim.SetBool("Run", false);
@@ -47,7 +47,7 @@ public class AnimationPlayer : MonoBehaviour
 
             }
         }
-      
+
     }
 
     public void GatherOn(string treename)
@@ -60,7 +60,7 @@ public class AnimationPlayer : MonoBehaviour
         else
         {
             anim.SetBool("Gathering Kneeling", true);
-        } 
+        }
         anim.SetBool("Run", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Idle", false);
@@ -77,11 +77,10 @@ public class AnimationPlayer : MonoBehaviour
 
     public void Water()
     {
-        if (Input.GetMouseButton(1))
-        {
-            anim.SetBool("Idle", false);
-            anim.SetTrigger("Watering");
-        }   
+
+        anim.SetBool("Idle", false);
+        anim.Play("Watering");
+
     }
 
     public void Eat()
