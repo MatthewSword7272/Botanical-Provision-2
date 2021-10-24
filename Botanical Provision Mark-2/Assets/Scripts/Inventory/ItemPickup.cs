@@ -23,7 +23,7 @@ public class ItemPickup : Interactable
     public bool firstWater = false;
     public bool secoundWater = false;
     public bool isopen = false;
-    public Animation anim;
+    public AnimationPlayer anim;
     public GameObject _Camera;
     public CinemachineFreeLook _3rdCam;
     private Color startcolor;
@@ -42,7 +42,7 @@ public class ItemPickup : Interactable
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         water = GameObject.Find("WaterSlider");
-        anim = FindObjectOfType<Animation>();
+        anim = FindObjectOfType<AnimationPlayer>();
         _Camera = GameObject.Find("3rd Person Camera");
         _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
         noSeedFruit = FindObjectOfType<NoMore>();
@@ -142,6 +142,7 @@ public class ItemPickup : Interactable
             {          
                 secoundWater = true;
             }
+            
             audioSource.PlayOneShot(wateringSound, 1f);
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
             anim.Water();

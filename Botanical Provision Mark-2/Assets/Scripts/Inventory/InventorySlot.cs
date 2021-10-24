@@ -15,14 +15,14 @@ public class InventorySlot : MonoBehaviour
     private Player player;
     public AudioSource audioSource;
     public AudioClip plantingSound;
-    private new Animation animation;
+    private new AnimationPlayer animation;
 
     private void Start()
     {
         inventory = Inventory.instance;
         player = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
-        animation = FindObjectOfType<Animation>();
+        animation = FindObjectOfType<AnimationPlayer>();
     }
 
     public void AddItem(Item newItem)

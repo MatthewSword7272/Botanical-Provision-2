@@ -7,12 +7,12 @@ public class fillWaterCan : Interactable
 {
     private PlayerVitals playerVitals;
     public Slider waterSlider;
-    public Animation anim;
+    public AnimationPlayer anim;
     private GameObject WaterPickObj;
     private AudioSource audioSource;
 
     void Start() {
-        anim = FindObjectOfType<Animation>();
+        anim = FindObjectOfType<AnimationPlayer>();
         WaterPickObj = GameObject.Find("Pick Up Water");
         audioSource = GetComponent<AudioSource>();
     }

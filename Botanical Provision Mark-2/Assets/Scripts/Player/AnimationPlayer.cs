@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animation : MonoBehaviour
+public class AnimationPlayer : MonoBehaviour
 {
     Animator anim;
     Player player;
@@ -26,8 +26,8 @@ public class Animation : MonoBehaviour
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
             }
-            if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Water") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting 02")))
-            {
+            if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Watering") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting 02")))
+            {              
                 anim.SetBool("Walk", false);
                 anim.SetBool("Idle", true);
                 anim.SetBool("Run", false);
@@ -77,8 +77,11 @@ public class Animation : MonoBehaviour
 
     public void Water()
     {
-        anim.SetBool("Idle", false);
-        anim.Play("Water");
+        if (Input.GetMouseButton(1))
+        {
+            anim.SetBool("Idle", false);
+            anim.SetTrigger("Watering");
+        }   
     }
 
     public void Eat()
