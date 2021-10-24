@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class ItemPickup : Interactable
 {
     // Start is called before the first frame update
-    bool firstloop=true;
-    public bool pickupEnbabled=true;
-    public bool rootVeg=false;
+    bool firstloop = true;
+    public bool pickupEnbabled = true;
+    public bool rootVeg = false;
     public Item itemf;
     public Item items;
     public Button Seed;
@@ -18,7 +18,7 @@ public class ItemPickup : Interactable
     private Player player;
     public GameObject water;
     private GameObject inventory;
-    public GameObject tree,tree1;
+    public GameObject tree, tree1;
     public bool grown = false;
     public bool firstWater = false;
     public bool secoundWater = false;
@@ -37,18 +37,22 @@ public class ItemPickup : Interactable
     private AudioSource audioSource;
 
 
-    private void Update() {
-        if (PauseMenu.GameIsPaused) {
+    private void Update()
+    {
+        if (PauseMenu.GameIsPaused)
+        {
             popup.enabled = false;
 
         }
-        if (isopen && !PauseMenu.GameIsPaused) {
+        if (isopen && !PauseMenu.GameIsPaused)
+        {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             popup.enabled = true;
         }
 
-        if (currentNSeeds == 0) {
+        if (currentNSeeds == 0)
+        {
             if (!rootVeg)
             {
                 pickupEnbabled = false;
@@ -57,7 +61,8 @@ public class ItemPickup : Interactable
                 StartCoroutine(coroutineA());
 
             }
-            else if(firstloop) {
+            else if (firstloop)
+            {
                 firstloop = false;
                 tree.SetActive(false);
                 pickupEnbabled = false;
@@ -92,17 +97,18 @@ public class ItemPickup : Interactable
         Renderer[] r;
 
         r = GetComponentsInChildren<Renderer>();
-        foreach (Renderer re in r) {
+        foreach (Renderer re in r)
+        {
             startcolor = re.material.color;
         }
         audioSource = GetComponent<AudioSource>();
         currentNSeeds = NumOfSeeds;
-        
 
-    }  
+
+    }
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown&&pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled)
         {
             Debug.Log("ripe");
             base.Interact();
@@ -141,7 +147,7 @@ public class ItemPickup : Interactable
         else if (secoundWater == false && enough)
         {
             Debug.Log("first water ");
-            audioSource.PlayOneShot(wateringSound, 1f);           
+            audioSource.PlayOneShot(wateringSound, 1f);
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 20;
             secoundWater = true;
             anim.Water();
@@ -169,7 +175,7 @@ public class ItemPickup : Interactable
     {
         if (currentNSeeds == 0)
         {
-           noSeedFruit.NoMoreStart("Plant does not have fruit");
+            noSeedFruit.NoMoreStart("Plant does not have fruit");
         }
         else
         {
@@ -198,7 +204,7 @@ public class ItemPickup : Interactable
 
     void OnMouseEnter()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3&&pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && pickupEnbabled)
         {
             if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
             {
@@ -207,7 +213,7 @@ public class ItemPickup : Interactable
                 GetComponentsInChildren<Renderer>();
                 foreach (Renderer re in r)
                 {
-                    re.material.color = Color.yellow; 
+                    re.material.color = Color.yellow;
                 }
             }
         }
@@ -216,7 +222,8 @@ public class ItemPickup : Interactable
     {
         Renderer[] r =
         GetComponentsInChildren<Renderer>();
-        foreach (Renderer re in r) {
+        foreach (Renderer re in r)
+        {
             re.material.color = startcolor;
         }
     }
