@@ -8,7 +8,11 @@ using UnityEngine.UI;
 public class GameOverMenu : MonoBehaviour
 {
 
-
+    void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void Restart()
     {
         SceneManager.LoadScene("Normal Version");

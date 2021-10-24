@@ -61,8 +61,6 @@ public class PlayerVitals : MonoBehaviour
     void CharacterDeath()
     {
         SceneManager.LoadScene("Game Over");
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
 
