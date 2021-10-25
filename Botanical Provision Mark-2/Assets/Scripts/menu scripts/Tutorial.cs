@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
-    public GameObject p,m;
-    public  PauseMenu pause;
-    public bool fromGame;
     public Canvas me;
     public Button Close;
     public Button Left;
@@ -17,10 +14,9 @@ public class Tutorial : MonoBehaviour
     int index=0;
   
     public void closebutton() {
-        if (fromGame)
+        if (SceneManager.GetActiveScene().name == "Normal Verison" || SceneManager.GetActiveScene().name == "Showcase Scene")
         {
-            p.SetActive(true);
-            m.SetActive(false);  
+            gameObject.SetActive(false); 
         }
         else 
             SceneManager.LoadScene("Title Screen");
