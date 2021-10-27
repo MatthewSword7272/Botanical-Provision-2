@@ -65,5 +65,4 @@ public class PlayerVitals : MonoBehaviour
         SceneManager.LoadScene("Game Over");
     }
 
-
 }
