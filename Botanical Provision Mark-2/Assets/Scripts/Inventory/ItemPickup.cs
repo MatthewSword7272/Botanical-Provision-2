@@ -196,7 +196,7 @@ public class ItemPickup : Interactable
 
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && pickupEnbabled)
         {
