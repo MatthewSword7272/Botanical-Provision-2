@@ -120,7 +120,7 @@ public class ItemPickup : Interactable
 
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 4 && !grown)
         {
             base.Interact();
             Water();
@@ -198,7 +198,7 @@ public class ItemPickup : Interactable
 
     void OnMouseOver()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 4 && pickupEnbabled)
         {
             if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
             {
@@ -207,7 +207,7 @@ public class ItemPickup : Interactable
                 GetComponentsInChildren<Renderer>();
                 foreach (Renderer re in r)
                 {
-                    re.material.color = Color.yellow;
+                    re.material.color = Color.green;
                 }
             }
         }

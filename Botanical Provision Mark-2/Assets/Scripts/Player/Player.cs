@@ -24,10 +24,11 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     public AudioClip walking;
     public AudioClip running;
-    
+    private float[] pitchValues = { 0.1f, 0.5f, 1f};
+
 
     private void Start()
-    {
+    { 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         audioSource = GetComponent<AudioSource>();
@@ -131,6 +132,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (!audioSource.isPlaying)
+        {
+            int index = Random.Range(0, 3);
+            audioSource.pitch = pitchValues[index];
+        }
 
     }
     void SetFocus(Interactable newFocus)
