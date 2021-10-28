@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
 {
-    Animator anim;
+    static Animator anim;
     Player player;
 
     // Start is called before the first frame update
@@ -66,7 +66,7 @@ public class AnimationPlayer : MonoBehaviour
         anim.SetBool("Idle", false);
     }
 
-    public void GatherOff()
+    public static void GatherOff()
     {
         anim.SetBool("Gathering Standing", false);
         anim.SetBool("Gathering Kneeling", false);

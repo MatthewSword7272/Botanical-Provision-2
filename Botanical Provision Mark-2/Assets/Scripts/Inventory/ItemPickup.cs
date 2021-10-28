@@ -117,6 +117,7 @@ public class ItemPickup : Interactable
             anim.GatherOn(gameObject.name);
             player.playerInPickUp = true;
             _3rdCam.enabled = false;
+            return;
 
         }
 
@@ -184,7 +185,7 @@ public class ItemPickup : Interactable
     {
         popup.enabled = false;
         isopen = false;
-        anim.GatherOff();
+        AnimationPlayer.GatherOff();
         player.playerInPickUp = false;
 
         if (!player.playerInInventory)

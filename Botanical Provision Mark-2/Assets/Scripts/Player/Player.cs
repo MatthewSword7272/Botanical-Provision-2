@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public AudioClip walking;
     public AudioClip running;
     private float[] pitchValues = { 0.1f, 0.5f, 1f};
+    public GameObject inventoryUI;
+    private ItemPickup itemPickup;
 
 
     private void Start()
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         audioSource = GetComponent<AudioSource>();
+        itemPickup = FindObjectOfType<ItemPickup>();
     }
 
     // Update is called once per frame
@@ -150,6 +153,19 @@ public class Player : MonoBehaviour
             }
         }
         newFocus.OnFocus(transform);
+    }
+
+    public void CancelElement()
+    {
+        Debug.Log("Lciked");
+        
+        playerInInventory = false;
+        inventoryUI.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        InventoryUI._3rdCam.enabled = true;
+
     }
 
 }

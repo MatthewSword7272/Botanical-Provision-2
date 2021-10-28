@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     InventorySlot[] slots;
     private Canvas popup;
     public GameObject _camera;
-    private CinemachineFreeLook _3rdCam;
+    public static CinemachineFreeLook _3rdCam;
     private Player player;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,6 @@ public class InventoryUI : MonoBehaviour
         popup = GameObject.FindGameObjectWithTag("popup").GetComponent<Canvas>();
         player = FindObjectOfType<Player>();
         _3rdCam = _camera.GetComponent<CinemachineFreeLook>();
-        
     }
 
     // Update is called once per frame
@@ -63,7 +62,7 @@ public class InventoryUI : MonoBehaviour
                     _3rdCam.enabled = true;
                 }
             }
-        }  
+        }
 
     }
     public void UpdateUI()
