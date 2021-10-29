@@ -8,7 +8,6 @@ public class ItemPickup : Interactable
 {
     // Start is called before the first frame update
     bool firstloop = true;
-    public bool pickupEnbabled = true;
     public bool rootVeg = false;
     public Item itemf;
     public Item items;
@@ -77,7 +76,6 @@ public class ItemPickup : Interactable
         {
             if (!rootVeg)
             {
-                pickupEnbabled = false;
                 tree.SetActive(false);
                 tree1.SetActive(true);
                 StartCoroutine(CoroutineA());
@@ -87,7 +85,6 @@ public class ItemPickup : Interactable
             {
                 firstloop = false;
                 tree.SetActive(false);
-                pickupEnbabled = false;
                 CloseClicked();
             }
 
@@ -100,13 +97,12 @@ public class ItemPickup : Interactable
         yield return new WaitForSeconds(60.0f);
         tree1.SetActive(false);
         tree.SetActive(true);
-        pickupEnbabled = true;
         currentNSeeds = NumOfSeeds;
     }
 
     public override void Interact()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown && pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && grown)
         {
             base.Interact();
             popup.enabled = true;
@@ -199,11 +195,10 @@ public class ItemPickup : Interactable
 
     void OnMouseOver()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 4 && pickupEnbabled)
+        if (Vector2.Distance(transform.position, player.transform.position) < 4)
         {
-            if (PauseMenu.GameIsPaused == false || player.playerInInventory == false)
+            if (!(PauseMenu.GameIsPaused && player.playerInInventory && player.playerInPickUp))
             {
-
                 Renderer[] r =
                 GetComponentsInChildren<Renderer>();
                 foreach (Renderer re in r)

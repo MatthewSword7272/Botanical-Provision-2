@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject HowtoPlayUI;
     private AudioSource gameMusic;
     public GameObject Reticle;
+    public GameObject CancelUI;
 
     // Update is called once per frame
     private void Start()
@@ -36,11 +37,13 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        CancelUI.SetActive(true);
         Time.timeScale = 1.0f;
         GameIsPaused = false;
         Cursor.visible = false;
@@ -53,6 +56,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        CancelUI.SetActive(false);
         Time.timeScale = 0.0f;
         GameIsPaused = true;
         Cursor.visible = true;

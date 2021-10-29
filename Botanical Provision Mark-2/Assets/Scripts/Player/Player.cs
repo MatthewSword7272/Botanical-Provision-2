@@ -161,7 +161,10 @@ public class Player : MonoBehaviour
         
         playerInInventory = false;
         inventoryUI.SetActive(false);
-
+        itemPickup.popup.enabled = false;
+        itemPickup.isopen = false;
+        AnimationPlayer.GatherOff();
+        playerInPickUp = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         InventoryUI._3rdCam.enabled = true;
