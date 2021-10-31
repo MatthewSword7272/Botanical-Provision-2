@@ -96,12 +96,8 @@ public class ItemPickup : Interactable
 
     bool ClickOutsideMenu()
     {
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() && (itemf.itemName == EventSystem.current.currentSelectedGameObject.name || items.itemName == EventSystem.current.currentSelectedGameObject.name))
-        {
-            Debug.Log("clicked on the thing");
-        }
-        else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject())
+        { 
             return true;
         }
 
