@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ItemPickup : Interactable
 {
@@ -57,9 +58,11 @@ public class ItemPickup : Interactable
         audioSource = GetComponent<AudioSource>();
         currentNSeeds = NumOfSeeds;
     }
+    bool exit = false;
 
     private void Update()
     {
+        
         if (PauseMenu.GameIsPaused)
         {
             popup.enabled = false;
@@ -89,11 +92,41 @@ public class ItemPickup : Interactable
             }
 
         }
+        if (isopen&&ClickOutsideMenu()) {
+            exit = true;
+        }
+        if (isopen && exit) {
+            exit = false;
+            CloseClicked();
+        }
 
     }
+
+    bool ClickOutsideMenu() {
+
+      
+
+
+            if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() &&( itemf.itemName == EventSystem.current.currentSelectedGameObject.name|| items.itemName == EventSystem.current.currentSelectedGameObject.name))
+            {
+
+
+                Debug.Log("clicked on the thing");
+            }
+            else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+            return true;
+               
+            };
+        
+       
+        return false;
+    
+    }
+
     IEnumerator CoroutineA()
     {
-        // wait for 1 second
+        // wait for 60 second
         yield return new WaitForSeconds(60.0f);
         tree1.SetActive(false);
         tree.SetActive(true);
