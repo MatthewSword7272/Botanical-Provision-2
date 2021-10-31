@@ -33,6 +33,7 @@ public class ItemPickup : Interactable
     public AudioClip pickUpSound;
     public AudioClip wateringSound;
     private AudioSource audioSource;
+    private Renderer r;
 
 
     private void Start()
@@ -46,11 +47,8 @@ public class ItemPickup : Interactable
         noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
-        Renderer[] r = GetComponentsInChildren<Renderer>();
-        foreach (Renderer re in r)
-        {
-            startcolor = re.material.color;
-        }
+        r = GetComponentInChildren<Renderer>();
+        startcolor = r.material.color;    
         audioSource = GetComponent<AudioSource>();
         currentNSeeds = NumOfSeeds;
     }
@@ -210,20 +208,12 @@ public class ItemPickup : Interactable
     {
         if (Vector2.Distance(transform.position, player.transform.position) < 3 && !PauseMenu.GameIsPaused && !player.playerInInventory && !player.playerInPickUp)
         {
-            Renderer[] r = GetComponentsInChildren<Renderer>();
-            foreach (Renderer re in r)
-            {
-                re.material.color = Color.green;
-            }
+            r.material.color = Color.blue;
         }
     }
     void OnMouseExit()
-    {
-        Renderer[] r = GetComponentsInChildren<Renderer>();
-        foreach (Renderer re in r)
-        {
-            re.material.color = startcolor;
-        }
+    {     
+        r.material.color = startcolor;      
     }
 
 }
