@@ -1,9 +1,8 @@
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemPickup : Interactable
 {
@@ -23,7 +22,6 @@ public class ItemPickup : Interactable
     public bool firstWater = false;
     public bool secoundWater = false;
     public bool isopen = false;
-    public AnimationPlayer anim;
     public GameObject _Camera;
     public CinemachineFreeLook _3rdCam;
     private Color startcolor;
@@ -36,21 +34,19 @@ public class ItemPickup : Interactable
     public AudioClip wateringSound;
     private AudioSource audioSource;
 
+
     private void Start()
     {
         popup = GetComponentInChildren<Canvas>();
         player = FindObjectOfType<Player>();
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         water = GameObject.Find("WaterSlider");
-        anim = FindObjectOfType<AnimationPlayer>();
         _Camera = GameObject.Find("3rd Person Camera");
         _3rdCam = _Camera.GetComponent<CinemachineFreeLook>();
         noSeedFruit = FindObjectOfType<NoMore>();
         pickSeedObj = GameObject.Find("Pick Seed From Plant");
         pickFruitObj = GameObject.Find("Pick Fruit Or Vegetable");
-        Renderer[] r;
-
-        r = GetComponentsInChildren<Renderer>();
+        Renderer[] r = GetComponentsInChildren<Renderer>();
         foreach (Renderer re in r)
         {
             startcolor = re.material.color;
@@ -58,11 +54,10 @@ public class ItemPickup : Interactable
         audioSource = GetComponent<AudioSource>();
         currentNSeeds = NumOfSeeds;
     }
-    bool exit = false;
 
     private void Update()
     {
-        
+
         if (PauseMenu.GameIsPaused)
         {
             popup.enabled = false;
@@ -92,42 +87,31 @@ public class ItemPickup : Interactable
             }
 
         }
-        if (isopen&&ClickOutsideMenu()) {
-            exit = true;
-        }
-        if (isopen && exit) {
-            exit = false;
+        if (isopen && ClickOutsideMenu())
+        {
             CloseClicked();
         }
 
     }
 
-    bool ClickOutsideMenu() {
-
-      
-
-
-            if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() &&( itemf.itemName == EventSystem.current.currentSelectedGameObject.name|| items.itemName == EventSystem.current.currentSelectedGameObject.name))
-            {
-
-
-                Debug.Log("clicked on the thing");
-            }
-            else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
+    bool ClickOutsideMenu()
+    {
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() && (itemf.itemName == EventSystem.current.currentSelectedGameObject.name || items.itemName == EventSystem.current.currentSelectedGameObject.name))
+        {
+            Debug.Log("clicked on the thing");
+        }
+        else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
             return true;
-               
-            };
-        
-       
+        }
+
         return false;
-    
     }
 
     IEnumerator CoroutineA()
     {
         // wait for 60 second
-        yield return new WaitForSeconds(60.0f);
+        yield return new WaitForSeconds(60f);
         tree1.SetActive(false);
         tree.SetActive(true);
         currentNSeeds = NumOfSeeds;
@@ -143,14 +127,14 @@ public class ItemPickup : Interactable
             isopen = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            anim.GatherOn(gameObject.name);
+            AnimationPlayer.GatherOn(gameObject.name);
             player.playerInPickUp = true;
             _3rdCam.enabled = false;
             return;
 
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < 4 && !grown)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !grown)
         {
             base.Interact();
             Water();
@@ -176,7 +160,7 @@ public class ItemPickup : Interactable
 
             audioSource.PlayOneShot(wateringSound, 1f);
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
-            anim.Water();
+            AnimationPlayer.Water();
 
         }
     }
@@ -228,23 +212,18 @@ public class ItemPickup : Interactable
 
     void OnMouseOver()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 4)
+        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !PauseMenu.GameIsPaused && !player.playerInInventory && !player.playerInPickUp)
         {
-            if (!(PauseMenu.GameIsPaused && player.playerInInventory && player.playerInPickUp))
+            Renderer[] r = GetComponentsInChildren<Renderer>();
+            foreach (Renderer re in r)
             {
-                Renderer[] r =
-                GetComponentsInChildren<Renderer>();
-                foreach (Renderer re in r)
-                {
-                    re.material.color = Color.green;
-                }
+                re.material.color = Color.green;
             }
         }
     }
     void OnMouseExit()
     {
-        Renderer[] r =
-        GetComponentsInChildren<Renderer>();
+        Renderer[] r = GetComponentsInChildren<Renderer>();
         foreach (Renderer re in r)
         {
             re.material.color = startcolor;
