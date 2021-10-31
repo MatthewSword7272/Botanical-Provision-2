@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +5,10 @@ public class fillWaterCan : Interactable
 {
     private PlayerVitals playerVitals;
     public Slider waterSlider;
-    public AnimationPlayer anim;
     private GameObject WaterPickObj;
     private AudioSource audioSource;
 
     void Start() {
-        anim = FindObjectOfType<AnimationPlayer>();
         WaterPickObj = GameObject.Find("Pick Up Water");
         audioSource = GetComponent<AudioSource>();
     }

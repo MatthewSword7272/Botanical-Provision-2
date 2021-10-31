@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
@@ -50,7 +48,7 @@ public class AnimationPlayer : MonoBehaviour
 
     }
 
-    public void GatherOn(string treename)
+    public static void GatherOn(string treename)
     {
 
         if (treename.Contains("Apple") || treename.Contains("Corn"))
@@ -75,7 +73,7 @@ public class AnimationPlayer : MonoBehaviour
         anim.SetBool("Idle", true);
     }
 
-    public void Water()
+    public static void Water()
     {
 
         anim.SetBool("Idle", false);
@@ -83,13 +81,13 @@ public class AnimationPlayer : MonoBehaviour
 
     }
 
-    public void Eat()
+    public static void Eat()
     {
         anim.SetBool("Idle", false);
         anim.Play("Eat");
     }
 
-    public void Plant()
+    public static void Plant()
     {
         anim.SetBool("Idle", false);
         anim.Play("Planting 02");

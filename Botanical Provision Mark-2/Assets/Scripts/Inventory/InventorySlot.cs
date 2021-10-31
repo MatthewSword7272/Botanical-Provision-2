@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
-
 
 public class InventorySlot : MonoBehaviour
 {
@@ -15,14 +11,12 @@ public class InventorySlot : MonoBehaviour
     private Player player;
     public AudioSource audioSource;
     public AudioClip plantingSound;
-    private new AnimationPlayer animation;
 
     private void Start()
     {
         inventory = Inventory.instance;
         player = FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
-        animation = FindObjectOfType<AnimationPlayer>();
     }
 
     public void AddItem(Item newItem)
@@ -84,13 +78,13 @@ public class InventorySlot : MonoBehaviour
             if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
             {
                 audioSource.Play();
-                animation.Eat();
+                AnimationPlayer.Eat();
                 RemoveItem();
                 return;
             }
             if (player.playerInZone || !item.itemName.Contains("Seed"))
-            {                
-                animation.Plant();
+            {
+                AnimationPlayer.Plant();
                 audioSource.PlayOneShot(plantingSound, 1f);
                 RemoveItem();
                 return;
