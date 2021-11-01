@@ -213,7 +213,7 @@ public class ItemPickup : Interactable
             Renderer[] r = GetComponentsInChildren<Renderer>();
             foreach (Renderer re in r)
             {
-                re.material.color = Color.green;
+                re.material.color = Color.blue;
             }
         }
     }
