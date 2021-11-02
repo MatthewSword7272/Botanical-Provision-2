@@ -13,7 +13,6 @@ public class ItemPickup : Interactable
     public Item items;
     public Button Seed;
     public Button Fruit;
-    public Button Close;
     private Player player;
     public GameObject water;
     private GameObject inventory;
@@ -95,16 +94,12 @@ public class ItemPickup : Interactable
 
     }
 
-    bool ClickOutsideMenu()
+    private bool ClickOutsideMenu()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.currentSelectedGameObject.CompareTag("popup"))
-        { 
-            return true;
-        }
-
-        return false;
+        return !PauseMenu.GameIsPaused
+            ? Input.GetMouseButtonDown(0) && !EventSystem.current.currentSelectedGameObject.CompareTag("popup")
+            : false;
     }
-
     IEnumerator CoroutineA()
     {
         // wait for 60 second
