@@ -44,7 +44,7 @@ public class AnimationPlayer : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 anim.SetBool("Run", false);
-                if (!(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)))
+                if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
                 {
                     anim.SetBool("Idle", true);
                 }
