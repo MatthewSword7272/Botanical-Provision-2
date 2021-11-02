@@ -47,10 +47,11 @@ public class Player : MonoBehaviour
         if (!playerInInventory && !playerInPickUp)
         {
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = 15f;
                 audioSource.clip = running;
+                audioSource.pitch = 1f;
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
