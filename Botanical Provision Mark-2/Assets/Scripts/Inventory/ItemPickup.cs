@@ -113,7 +113,7 @@ public class ItemPickup : Interactable
         tree.SetActive(true);
         foreach (Renderer re in r)
         {
-            startcolor = re.material.color;
+            re.material.color = startcolor;
         }
         currentNSeeds = NumOfSeeds;
     }
