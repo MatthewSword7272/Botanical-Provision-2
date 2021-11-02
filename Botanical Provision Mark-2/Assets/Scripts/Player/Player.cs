@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int index = Random.Range(0, 2);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groudMask);
 
         if (isGrounded && velocity.y < 0)
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
             {
                 speed = 6f;
                 audioSource.clip = walking;
+                audioSource.pitch = pitchValues[index];
             }
 
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -134,8 +136,7 @@ public class Player : MonoBehaviour
         }
 
         if (!audioSource.isPlaying)
-        {
-            int index = Random.Range(0, 2);
+        {         
             audioSource.pitch = pitchValues[index];
         }
 
