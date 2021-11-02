@@ -18,10 +18,15 @@ public class AnimationPlayer : MonoBehaviour
         if (!player.playerInInventory && !player.playerInPickUp)
         {
 
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
             {
                 anim.SetBool("Idle", false);
                 anim.SetBool("Walk", true);
+            }
+            else
+            {
+                anim.SetBool("Walk", false);
+                anim.SetBool("Idle", true);
                 anim.SetBool("Run", false);
             }
             if (!Input.anyKey && (!anim.GetCurrentAnimatorStateInfo(0).IsName("Watering") || !anim.GetCurrentAnimatorStateInfo(0).IsName("Planting 02")))
@@ -31,18 +36,22 @@ public class AnimationPlayer : MonoBehaviour
                 anim.SetBool("Run", false);
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && anim.GetBool("Walk"))
+            if (Input.GetKey(KeyCode.LeftShift) && anim.GetBool("Walk"))
             {
                 anim.SetBool("Run", true);
                 anim.SetBool("Walk", false);
-                anim.SetBool("Idle", false);
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 anim.SetBool("Run", false);
-                anim.SetBool("Walk", true);
-                anim.SetBool("Idle", false);
-
+                if (!(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)))
+                {
+                    anim.SetBool("Idle", true);
+                }
+                else
+                {
+                    anim.SetBool("Walk", true);
+                }
             }
         }
 

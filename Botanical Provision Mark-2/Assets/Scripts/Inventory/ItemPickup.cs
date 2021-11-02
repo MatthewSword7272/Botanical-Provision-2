@@ -208,7 +208,7 @@ public class ItemPickup : Interactable
 
     void OnMouseOver()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 3 && !PauseMenu.GameIsPaused && !player.playerInInventory && !player.playerInPickUp)
+        if (Vector3.Distance(transform.position, player.transform.position) < 3 && !PauseMenu.GameIsPaused && !player.playerInInventory && !player.playerInPickUp)
         {
             Renderer[] r = GetComponentsInChildren<Renderer>();
             foreach (Renderer re in r)
