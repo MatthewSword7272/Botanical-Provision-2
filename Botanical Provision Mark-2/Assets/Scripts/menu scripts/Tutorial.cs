@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
     public Sprite[] screens = new Sprite[5];
     int index = 0;
 
-    public void closebutton()
+    public void Closebutton()
     {
         if (SceneManager.GetActiveScene().name == "Normal Verison" || SceneManager.GetActiveScene().name == "Showcase Scene")
         {
