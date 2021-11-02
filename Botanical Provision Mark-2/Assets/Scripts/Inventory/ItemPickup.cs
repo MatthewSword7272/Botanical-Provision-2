@@ -156,8 +156,7 @@ public class ItemPickup : Interactable
 
             audioSource.PlayOneShot(wateringSound, 1f);
             water.GetComponent<Slider>().value = water.GetComponent<Slider>().value - 15;
-            AnimationPlayer.Water();
-
+            StartCoroutine(AnimationPlayer.Water());
         }
     }
 

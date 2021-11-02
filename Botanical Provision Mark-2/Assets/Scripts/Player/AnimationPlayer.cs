@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
@@ -82,23 +83,27 @@ public class AnimationPlayer : MonoBehaviour
         anim.SetBool("Idle", true);
     }
 
-    public static void Water()
+    public static IEnumerator Water()
     {
-
         anim.SetBool("Idle", false);
         anim.Play("Watering");
-
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        anim.SetBool("Idle", true);
     }
 
-    public static void Eat()
+    public static IEnumerator Eat()
     {
         anim.SetBool("Idle", false);
         anim.Play("Eat");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        anim.SetBool("Idle", true);
     }
 
-    public static void Plant()
+    public static IEnumerator Plant()
     {
         anim.SetBool("Idle", false);
         anim.Play("Planting 02");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        anim.SetBool("Idle", true);
     }
 }

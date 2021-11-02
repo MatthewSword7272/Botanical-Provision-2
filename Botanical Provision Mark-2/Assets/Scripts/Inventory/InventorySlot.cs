@@ -25,7 +25,7 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = newItem.icon;
         icon.enabled = true;
         removeButton.interactable = true;
-        
+
         _amountText.text = item.itemAmount.ToString();
     }
 
@@ -73,18 +73,18 @@ public class InventorySlot : MonoBehaviour
         if (item)
         {
             item.Use();
-            
+
 
             if (item.itemName.Contains("Fruit") || item.itemName.Contains("Veg"))
             {
                 audioSource.Play();
-                AnimationPlayer.Eat();
+                StartCoroutine(AnimationPlayer.Eat());
                 RemoveItem();
                 return;
             }
             if (player.playerInZone || !item.itemName.Contains("Seed"))
             {
-                AnimationPlayer.Plant();
+                StartCoroutine(AnimationPlayer.Plant());
                 audioSource.PlayOneShot(plantingSound, 1f);
                 RemoveItem();
                 return;
