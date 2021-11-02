@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     public AudioClip walking;
     public AudioClip running;
-    private float[] pitchValues = { 0.1f, 0.5f, 1f};
+    private float[] pitchValues = {0.5f, 1f};
     public GameObject inventoryUI;
     private ItemPickup itemPickup;
 
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
 
         if (!audioSource.isPlaying)
         {
-            int index = Random.Range(0, 3);
+            int index = Random.Range(0, 2);
             audioSource.pitch = pitchValues[index];
         }
 
