@@ -61,7 +61,6 @@ public class ItemPickup : Interactable
         if (PauseMenu.GameIsPaused)
         {
             popup.enabled = false;
-
         }
         if (isopen && !PauseMenu.GameIsPaused)
         {
@@ -100,6 +99,7 @@ public class ItemPickup : Interactable
             ? Input.GetMouseButtonDown(0) && !EventSystem.current.currentSelectedGameObject.CompareTag("popup")
             : false;
     }
+
     IEnumerator CoroutineA()
     {
         // wait for 60 second

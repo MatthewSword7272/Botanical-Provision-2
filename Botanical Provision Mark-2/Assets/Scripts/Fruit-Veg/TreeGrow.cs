@@ -61,7 +61,7 @@ public class TreeGrow : MonoBehaviour
         }
 
 
-        if ((transform.localScale.x >= 1 && transform.localScale.x < 2) && pick.firstWater == true)
+        if (transform.localScale.x >= 1 && transform.localScale.x < 2 && pick.firstWater)
         {
             treeState = 2;
             GetComponentInChildren<MeshFilter>().mesh = _mesh[1];

@@ -43,17 +43,21 @@ public class PlayerVitals : MonoBehaviour
         }
 
         //Hunger Controller
-        if (hungerSlider.value >= 0)
+        switch (hungerSlider.value)
         {
-            hungerSlider.value -= Time.deltaTime / hungerFallRate;
-        }
-        else if (hungerSlider.value <= 0)
-        {
-            hungerSlider.value = 0;
-        }
-        else if (hungerSlider.value >= maxHunger)
-        {
-            hungerSlider.value = maxHunger;
+            case >= 0:
+                hungerSlider.value -= Time.deltaTime / hungerFallRate;
+                break;
+            case <= 0:
+                hungerSlider.value = 0;
+                break;
+            default:
+                if (hungerSlider.value >= maxHunger)
+                {
+                    hungerSlider.value = maxHunger;
+                }
+
+                break;
         }
 
     }

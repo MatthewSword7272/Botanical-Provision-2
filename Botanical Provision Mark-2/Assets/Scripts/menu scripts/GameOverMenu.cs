@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
-    public void Restart()
-    {
-        ///
-    }
-
     public void LoadMenu()
     {
         SceneManager.LoadScene("Title Screen");

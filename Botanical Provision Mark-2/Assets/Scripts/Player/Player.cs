@@ -78,14 +78,7 @@ public class Player : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
 
-            if (horizontal < 0 || vertical != 0)
-            {
-                isMoving = true;
-            }
-            else
-            {
-                isMoving = false;
-            }
+            isMoving = horizontal < 0 || vertical != 0;
 
             if (isMoving)
             {
@@ -113,9 +106,7 @@ public class Player : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
-
                     SetFocus(interactable);
-
                 }
             }
 
@@ -156,8 +147,6 @@ public class Player : MonoBehaviour
 
     public void CancelElement()
     {
-        Debug.Log("Lciked");
-
         playerInInventory = false;
         inventoryUI.SetActive(false);
         itemPickup.popup.enabled = false;
