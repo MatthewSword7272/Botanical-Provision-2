@@ -21,13 +21,13 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     public AudioClip walking;
     public AudioClip running;
-    private float[] pitchValues = {0.5f, 1f};
+    private readonly float[] pitchValues = { 0.5f, 1f };
     public GameObject inventoryUI;
     private ItemPickup itemPickup;
 
 
     private void Start()
-    { 
+    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         audioSource = GetComponent<AudioSource>();
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            else 
+            else
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         }
 
         if (!audioSource.isPlaying)
-        {         
+        {
             audioSource.pitch = pitchValues[index];
         }
 
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
     public void CancelElement()
     {
         Debug.Log("Lciked");
-        
+
         playerInInventory = false;
         inventoryUI.SetActive(false);
         itemPickup.popup.enabled = false;
