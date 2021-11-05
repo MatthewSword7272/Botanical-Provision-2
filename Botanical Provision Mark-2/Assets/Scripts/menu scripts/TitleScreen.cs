@@ -15,12 +15,12 @@ public class TitleScreen : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void HowToPlay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
 
